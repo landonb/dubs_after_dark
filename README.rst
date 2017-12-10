@@ -20,6 +20,8 @@ Vibrant white and light text on a black background.
 
 .. role:: wavy
 
+.. image:: doc/color-scheme-test-ruby-and-javascript.png
+
 About This Plugin
 -----------------
 
