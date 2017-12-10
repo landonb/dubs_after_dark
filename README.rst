@@ -3,23 +3,6 @@ Dubsacks Vim — Dubs After Dark
 
 Vibrant white and light text on a black background.
 
-.. raw:: html
-
-   <style>
-    .red { color: red }
-    .wavy {
-      background-color: #2E3440;
-      color: #FFFFFF;
-      text-decoration-line: underline;
-      text-decoration-style: wavy;
-      text-decoration-color: red;
-    }
-   </style>
-
-.. role:: red
-
-.. role:: wavy
-
 .. image:: doc/color-scheme-test-ruby-and-javascript.png
 
 About This Plugin
@@ -45,7 +28,7 @@ This plugin makes the following tweaks:
   are highlighted with a light pink background and underline.
 
 - Spelling mistakes are highlighted with a light grey background
-  and a :wavy:`red undercurl`.
+  and a red undercurl.
 
 - The ``ColorColumn`` is set to light grey.
 
