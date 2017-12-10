@@ -142,7 +142,12 @@ function! s:Color__After_Dark__Set_Highlights()
 
   highlight SpecialKey ctermfg=242 guifg=DarkGrey
   " SAME: highlight link EndOfBuffer NonText
-  highlight NonText ctermfg=242 guifg=DarkGrey
+  "
+  "highlight NonText ctermfg=242 guifg=DarkGrey
+  " Make the tildes of blank lines visible.
+  "highlight NonText guifg=#7f7f7f
+  highlight NonText term=NONE cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=#7f7f7f guibg=NONE
+
   " TERM: highlight Directory term=bold ctermfg=159 guifg=Cyan
   highlight ErrorMsg term=standout ctermfg=15 ctermbg=1 guifg=White guibg=Red
   " SAME: highlight IncSearch term=reverse cterm=reverse gui=reverse
