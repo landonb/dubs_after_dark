@@ -140,7 +140,10 @@ function! s:Color__After_Dark__Set_Highlights()
   "       I'm keeping them, though, to maintain parity with the earlier
   "       function, to make the two easy to diff.
 
-  highlight SpecialKey ctermfg=242 guifg=DarkGrey
+  "highlight SpecialKey ctermfg=242 guifg=DarkGrey
+  " Color of Meta and special keys, i.e., unprintable characters. See :map.
+  highlight SpecialKey term=NONE cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+
   " SAME: highlight link EndOfBuffer NonText
   "
   "highlight NonText ctermfg=242 guifg=DarkGrey
@@ -150,25 +153,53 @@ function! s:Color__After_Dark__Set_Highlights()
 
   " TERM: highlight Directory term=bold ctermfg=159 guifg=Cyan
   highlight ErrorMsg term=standout ctermfg=15 ctermbg=1 guifg=White guibg=Red
+
+  " When you start a search, IncSearch is the color used to highlight the
+  " first match. I tried white on black, but reverse is really the way to go.
+  "highlight IncSearch term=reverse guifg=#000000 guibg=#FFFFFF gui=underline ctermfg=0 ctermbg=6 cterm=underline
   " SAME: highlight IncSearch term=reverse cterm=reverse gui=reverse
 
   " 2017-12-09: The Search highlight is ridiculously hard to get right.
-  "   This is close.
+  " Default cursor is inverse of text:
+  "  highlight Cursor guifg=bg guibg=fg
+  " which is same as this Search highlighting:
+  "  highlight Search guibg=White guifg=Black
+  " A bluish background color: 
+  "highlight Search term=reverse guifg=#3B4252 guibg=#88C0D0 ctermfg=0 ctermbg=6
+  " This is close. Light text on light pink background.
   highlight Search term=reverse cterm=underline ctermfg=0 ctermbg=14 gui=underline guifg=#f0a0c0 guibg=#302028
 
   " TERM: highlight MoreMsg term=bold ctermfg=121 gui=bold guifg=SeaGreen
   " SAME: highlight ModeMsg term=bold cterm=bold gui=bold
 
   " Grey line numbers, rather than yellow.
-  highlight LineNr ctermfg=242 guifg=DarkGrey
+  "highlight LineNr ctermfg=242 guifg=DarkGrey
+  highlight LineNr term=NONE cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
   highlight CursorLineNr term=bold ctermfg=11 gui=bold guifg=Yellow
   " TERM: highlight Question term=standout ctermfg=121 gui=bold guifg=Green
-  highlight StatusLine term=bold,reverse ctermfg=11 ctermbg=242 guifg=Yellow guibg=DarkGray
-  highlight StatusLineNC term=reverse cterm=reverse ctermfg=15 ctermbg=242 guifg=White guibg=DarkGray
+  "highlight StatusLine term=bold,reverse ctermfg=11 ctermbg=242 guifg=Yellow guibg=DarkGray
+  highlight StatusLine term=bold,reverse gui=NONE guifg=Yellow guibg=DarkGreen cterm=NONE ctermfg=DarkYellow ctermbg=DarkGray
+  "highlight StatusLineNC term=reverse cterm=reverse ctermfg=15 ctermbg=242 guifg=White guibg=DarkGray
+  "highlight StatusLineNC term=reverse gui=NONE guifg=Black guibg=DarkGray ctermfg=Black ctermbg=DarkGray
+  highlight StatusLineNC term=reverse gui=NONE guifg=LightGray guibg=DarkBlue ctermfg=LightGray ctermbg=DarkBlue
 
-  " Be deliberate about the color of the window split line.
+  " VertSplit: When two windows are split vertically, there's a column of
+  " black rectangles running between them, and each black rectangle has a
+  " vertical bar in it. This is sorta ugly. It looks nicer if you paint
+  " the rectangles a solid color, effectively hiding the `|`; or painting
+  " the rectangles the same as the Vim background color, effectively hiding
+  " the vertical bars. (The line numbers provide adequate window separation,
+  " IMHO.)
+  "
+  " Make the split border color white.
   highlight VertSplit term=reverse cterm=reverse ctermfg=15 ctermbg=15 guifg=White guibg=White
+  " ... or hide it completely:
+  " Hide the vertical split window border.
+  "   Between two windows that are vertically split, there are
+  "   black rectangles with white bars inside. Make the vertical
+  "   tab characters to be white on white, hiding them.
+  highlight VertSplit term=reverse gui=NONE guifg=#060606 guibg=#060606 ctermfg=Black ctermbg=Black
 
   " TERM: highlight Title term=bold ctermfg=225 gui=bold guifg=Magenta
   highlight Visual term=reverse ctermbg=242 guibg=DarkGrey
@@ -202,33 +233,74 @@ function! s:Color__After_Dark__Set_Highlights()
   " SAME: highlight CursorLine term=underline cterm=underline guibg=Grey40
 
   " Make the ColorColumn a gentler color that works with any text color over it.
+  "highlight ColorColumn ctermfg=lightyellow ctermbg=darkgreen guifg=#D8DEE9 guibg=#2E3440
   highlight ColorColumn term=reverse ctermfg=14 ctermbg=2 guifg=#D8DEE9 guibg=#2E3440
 
   " SAME: highlight link QuickFixLine Search
   " TERM: highlight StatusLineTerm term=bold,reverse cterm=bold ctermfg=0 ctermbg=121 gui=bold guifg=bg guibg=LightGreen
   " TERM: highlight StatusLineTermNC term=reverse ctermfg=0 ctermbg=121 guifg=bg guibg=LightGreen
+
+  " 2017-12-01: Configure the cursor.
+  " There's lot more info here:
+  "   http://vim.wikia.com/wiki/Configuring_the_cursor
+  " and under
+  "   :h Cursor\>
+  "highlight Cursor guifg=black guibg=white
+  "highlight Cursor guifg=red guibg=green
+  "highlight iCursor guifg=red guibg=white
+  " nord's: let s:nord4_gui = "#D8DEE9" / s:nord0_gui = "#2E3440"
+  "highlight Cursor guifg=#2E3440 guibg=#D8DEE9
+  "highlight Cursor guifg=#2E3440 guibg=#ECEFF4
+  "highlight Cursor guifg=#2E3440 guibg=#ECEFF4
   " SAME: highlight Cursor guifg=bg guibg=fg
+
   " SAME: highlight lCursor guifg=bg guibg=fg
+
   highlight MatchParen term=reverse ctermbg=6 guibg=DarkCyan
   " SAME: highlight Normal ctermfg=15 guifg=White guibg=#060606
   " TERM: highlight ToolbarLine term=underline ctermbg=242 guibg=Grey50
   " SAME: highlight ToolbarButton cterm=bold ctermfg=0 ctermbg=7 gui=bold guifg=Black guibg=LightGrey
 
-  highlight Comment term=bold ctermfg=14 gui=NONE guifg=#80a0ff
   " 2017-12-05: I'm pretty sure I do want italicized comments...
   "highlight Comment term=bold ctermfg=14 gui=italic guifg=#80a0ff
+  " 2017-11-17: Nord default:
+  "highlight Comment term=bold ctermfg=8 guifg=#4C566A
+  " Something a little lighter. Used:
+  "   https://www.sessions.edu/color-calculator/
+  "highlight Comment term=bold ctermfg=8 guifg=#7888a6
+  "highlight Comment term=bold ctermfg=8 guifg=#8292b3
+  " Perhaps something more yellow?
+  "highlight Comment term=bold ctermfg=8 guifg=#abb382
+  " Or pinkish reddish?:
+  "highlight Comment term=bold ctermfg=8 guifg=#b38a82
+  " I really like mild blue comments, I think:
+  highlight Comment term=bold ctermfg=14 gui=NONE guifg=#80a0ff
 
   highlight Constant term=underline ctermfg=13 guifg=#ffa0a0
   " TERM: highlight Special term=bold ctermfg=224 guifg=Orange
+
+  "highlight Identifier term=underline guifg=#D8DEE9
+  " In lighttime, same color as SpellLocal.
+  "highlight Identifier term=underline ctermfg=6 guifg=#E5E9F0
+  " But that's too bright, almost indistinguisable from white.
+  "highlight Identifier term=underline ctermfg=6 guifg=#656970
+  " Meh: The normal Identifier highlight is a nice baby blue:
   " TERM: highlight Identifier term=underline cterm=bold ctermfg=14 guifg=#40ffff
+
   highlight Statement term=bold ctermfg=11 gui=bold guifg=#ffff60
   " TERM: highlight PreProc term=underline ctermfg=81 guifg=#ff80ff
   " TERM: highlight Type term=underline ctermfg=121 gui=bold guifg=#60ff60
   " TERM: highlight Underlined term=underline cterm=underline ctermfg=81 gui=underline guifg=#80a0ff
   highlight Ignore ctermfg=0 guifg=bg
   highlight Error term=reverse ctermfg=15 ctermbg=9 guifg=White guibg=Red
+
+  " "TODO:" and "FIXME:" Highlights.
+  "highlight Todo term=standout ctermfg=3 guifg=#EBCB8B guibg=Yellow
+  "highlight Todo term=standout ctermfg=3 guifg=#000000 guibg=Yellow
+  "highlight Todo term=standout ctermfg=3 guifg=#000000 guibg=#C6C6C6
   highlight Todo term=standout ctermfg=0 ctermbg=11 guifg=Blue guibg=Yellow
 
+  " From github.com/landonb/dubs_appearance. Not a very good name.
   highlight MyErrorMsg term=standout ctermfg=15 ctermbg=4 guibg=LightBlue
 endfunction
 
@@ -257,6 +329,9 @@ function! s:Color__After_Dark__Main()
 
   set background=dark
   
+  " 2017-11-12: Weird. In the terminal ctermbg=Black or =0 is same as =DarkGray/DarkGrey.
+  "   But using 8 gets us black... or any number not negative or 0-7....
+  "   Also, ctermbg=none works.
   " Set the background, e.g.,
   "   highlight Normal gui=NONE guifg=White guibg=#060606 ctermfg=White ctermbg=none
   exe 'highlight Normal gui=NONE '
