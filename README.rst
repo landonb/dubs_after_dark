@@ -38,6 +38,11 @@ This plugin makes the following tweaks:
   easily override by setting ``g:dubs_after_dark_background``
   before loading the color.
 
+- Less distracting dark grey line numbers (Vim's default is deep red)
+  that work well either a light background or a dark background.
+
+- Remove the distracting vertical bar between split windows.
+
 - And more! Your best bet is to install the plugin, load the color,
   and see if you like it.::
 
