@@ -16,7 +16,6 @@ Basically, if you clear highlights and start fresh, e.g.,:
 .. code-block:: vim
 
   highlight clear
-  colorscheme default " I (landonb) think this is same as :hi clear.
   set background=dark
   set termguicolors
   highlight Normal gui=NONE guifg=White guibg=#060606 ctermfg=White ctermbg=none
@@ -40,7 +39,7 @@ This plugin makes the following tweaks:
   :color after-dark
 
 The Dubs After Dark color works well the compelling
-`Dubs Appearance <https://github.com/landonb/dubs_appearance>`__`
+`Dubs Appearance <https://github.com/landonb/dubs_appearance>`__
 plugin, which adjusts other parts of the look and feel of Vim.
 <Shameless self-plug.>
 
