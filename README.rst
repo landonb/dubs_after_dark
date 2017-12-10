@@ -5,6 +5,8 @@ Vibrant white and light text on a black background.
 
 .. image:: doc/color-scheme-test-ruby-and-javascript.png
 
+*The Dubs After Dark color scheme and* `Dubs Mescaline <https://github.com/landonb/dubs_mescaline>`__ *status line.*
+
 About This Plugin
 -----------------
 
@@ -73,9 +75,4 @@ Online help:
 
    :Helptags
    :help dubs-after-dark
-
-Appearance Commands
----------------------
-
-This script does not define any commands.
 
