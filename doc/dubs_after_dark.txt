@@ -28,7 +28,8 @@ This plugin makes the following tweaks:
 - Searches (i.e., started with `/`, `*`, or Dubs' `<F1>`)
   are highlighted with a light pink background and underline.
 
-- Spelling mistakes are highlight in XXX with an undercurl.
+- Spelling mistakes are highlighted with a light grey background
+  and a red undercurl.
 
 - The `ColorColumn` is set to light grey.
 
