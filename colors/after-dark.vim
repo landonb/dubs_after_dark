@@ -1,6 +1,6 @@
 " File: dubs_appearance.vim
 " Author: Landon Bouma (landonb &#x40; retrosoft &#x2E; com)
-" Last Modified: 2017.12.09
+" Last Modified: 2017.12.17
 " Project Page: https://github.com/landonb/dubs_appearance
 " Summary: Nighttime! Complete Vim highlight file
 " License: GPLv3
@@ -40,7 +40,10 @@ endif
 
 " NOTE: This function is not run; it's just for reference.
 function! s:Color__After_Dark__Reference__Vanilla_Gvim()
-  " These are the defaults highlights from stock Vim.
+  " =================================
+  " Default highlights from stock Vim
+  " =================================
+  "
   " To generate, starting from Vanilla gVim:
   "   $ gvim --noplugin
   " And run the following Vim commands to get the highlights:
@@ -202,7 +205,11 @@ function! s:Color__After_Dark__Set_Highlights()
   highlight VertSplit term=reverse gui=NONE guifg=#060606 guibg=#060606 ctermfg=Black ctermbg=Black
 
   " TERM: highlight Title term=bold ctermfg=225 gui=bold guifg=Magenta
-  highlight Visual term=reverse ctermbg=242 guibg=DarkGrey
+  "highlight Visual term=reverse ctermbg=242 guibg=DarkGrey gui=None
+  " 2017-12-17: Visual is going to be difficult to get right.
+  "   How will this cut it? Red background... loud on paper, but I like it.
+  highlight Visual term=reverse ctermbg=242 guifg=White guibg=Red gui=none
+
   " SAME: highlight VisualNOS term=bold,underline cterm=bold,underline gui=bold,underline
   " TERM: highlight WarningMsg term=standout ctermfg=224 guifg=Red
   highlight WildMenu term=standout ctermfg=0 ctermbg=11 guifg=Black guibg=Yellow
