@@ -170,7 +170,16 @@ function! s:Color__After_Dark__Set_Highlights()
   " A bluish background color: 
   "highlight Search term=reverse guifg=#3B4252 guibg=#88C0D0 ctermfg=0 ctermbg=6
   " This is close. Light text on light pink background.
+
+
+
+
+" 2018-02-01 19:52: STILL FIGURING THIS OUT!
   highlight Search term=reverse cterm=underline ctermfg=0 ctermbg=14 gui=underline guifg=#f0a0c0 guibg=#302028
+highlight Search ctermfg=0 ctermbg=14 guifg=Black guibg=Yellow
+
+
+
 
   " TERM: highlight MoreMsg term=bold ctermfg=121 gui=bold guifg=SeaGreen
   " SAME: highlight ModeMsg term=bold cterm=bold gui=bold
@@ -283,7 +292,8 @@ function! s:Color__After_Dark__Set_Highlights()
   " I really like mild blue comments, I think:
   highlight Comment term=bold ctermfg=14 gui=NONE guifg=#80a0ff
 
-  highlight Constant term=underline ctermfg=13 guifg=#ffa0a0
+  "highlight Constant term=underline ctermfg=13 guifg=#ffa0a0
+  highlight Constant term=underline ctermfg=13 guifg=#ffcc77
   " TERM: highlight Special term=bold ctermfg=224 guifg=Orange
 
   "highlight Identifier term=underline guifg=#D8DEE9
