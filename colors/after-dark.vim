@@ -163,23 +163,31 @@ function! s:Color__After_Dark__Set_Highlights()
   " SAME: highlight IncSearch term=reverse cterm=reverse gui=reverse
 
   " 2017-12-09: The Search highlight is ridiculously hard to get right.
+  " There's lot more info here:
+  "   http://vim.wikia.com/wiki/Configuring_the_cursor
+  " and under
+  "   :h Cursor\>
   " Default cursor is inverse of text:
   "  highlight Cursor guifg=bg guibg=fg
   " which is same as this Search highlighting:
   "  highlight Search guibg=White guifg=Black
+  "
+  "highlight Cursor guifg=black guibg=white
+  "highlight Cursor guifg=red guibg=green
+  "highlight iCursor guifg=red guibg=white
+  " nord's: let s:nord4_gui = "#D8DEE9" / s:nord0_gui = "#2E3440"
+  "highlight Cursor guifg=#2E3440 guibg=#D8DEE9
+  "highlight Cursor guifg=#2E3440 guibg=#ECEFF4
   " A bluish background color: 
   "highlight Search term=reverse guifg=#3B4252 guibg=#88C0D0 ctermfg=0 ctermbg=6
   " This is close. Light text on light pink background.
+  " 2018-02-10: Perhaps this.
+  "highlight Cursor term=bold cterm=bold guibg=Blue guifg=Green
+  highlight Cursor term=bold cterm=bold guibg=White guifg=White
 
-
-
-
-" 2018-02-01 19:52: STILL FIGURING THIS OUT!
+  " 2018-02-01 19:52: STILL FIGURING THIS OUT!
   highlight Search term=reverse cterm=underline ctermfg=0 ctermbg=14 gui=underline guifg=#f0a0c0 guibg=#302028
 highlight Search ctermfg=0 ctermbg=14 guifg=Black guibg=Yellow
-
-
-
 
   " TERM: highlight MoreMsg term=bold ctermfg=121 gui=bold guifg=SeaGreen
   " SAME: highlight ModeMsg term=bold cterm=bold gui=bold
@@ -255,22 +263,6 @@ highlight Search ctermfg=0 ctermbg=14 guifg=Black guibg=Yellow
   " SAME: highlight link QuickFixLine Search
   " TERM: highlight StatusLineTerm term=bold,reverse cterm=bold ctermfg=0 ctermbg=121 gui=bold guifg=bg guibg=LightGreen
   " TERM: highlight StatusLineTermNC term=reverse ctermfg=0 ctermbg=121 guifg=bg guibg=LightGreen
-
-  " 2017-12-01: Configure the cursor.
-  " There's lot more info here:
-  "   http://vim.wikia.com/wiki/Configuring_the_cursor
-  " and under
-  "   :h Cursor\>
-  "highlight Cursor guifg=black guibg=white
-  "highlight Cursor guifg=red guibg=green
-  "highlight iCursor guifg=red guibg=white
-  " nord's: let s:nord4_gui = "#D8DEE9" / s:nord0_gui = "#2E3440"
-  "highlight Cursor guifg=#2E3440 guibg=#D8DEE9
-  "highlight Cursor guifg=#2E3440 guibg=#ECEFF4
-  "highlight Cursor guifg=#2E3440 guibg=#ECEFF4
-  " SAME: highlight Cursor guifg=bg guibg=fg
-
-  " SAME: highlight lCursor guifg=bg guibg=fg
 
   highlight MatchParen term=reverse ctermbg=6 guibg=DarkCyan
   " SAME: highlight Normal ctermfg=15 guifg=White guibg=#060606
