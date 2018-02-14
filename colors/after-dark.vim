@@ -183,11 +183,23 @@ function! s:Color__After_Dark__Set_Highlights()
   " This is close. Light text on light pink background.
   " 2018-02-10: Perhaps this.
   "highlight Cursor term=bold cterm=bold guibg=Blue guifg=Green
-  highlight Cursor term=bold cterm=bold guibg=White guifg=White
+  "highlight Cursor term=bold cterm=bold guibg=White guifg=White
+
+  " 2018-02-14: cobalt2
+  highlight CursorColumn term=reverse ctermbg=234 guibg=#FFC600
+  highlight CursorLineNr term=bold ctermfg=123 guifg=#80FCFF
+  highlight CursorLine term=underline ctermbg=235 guibg=#FFC600
+  "highlight Cursor ctermfg=16 ctermbg=220 guifg=#193549 guibg=#FFC600
+  " Tweak cobalt2 to contrast better with the Search highlight
+  highlight Cursor term=bold cterm=bold guifg=#121212 guibg=#afd700
 
   " 2018-02-01 19:52: STILL FIGURING THIS OUT!
-  highlight Search term=reverse cterm=underline ctermfg=0 ctermbg=14 gui=underline guifg=#f0a0c0 guibg=#302028
-highlight Search ctermfg=0 ctermbg=14 guifg=Black guibg=Yellow
+  " I tried a light pink background for search matches, but it's too subtle.
+  "  highlight Search term=reverse cterm=underline ctermfg=0 ctermbg=14 gui=underline guifg=#f0a0c0 guibg=#302028
+  " Then I tried Black on Yellow, but that's a bit much.
+  "  highlight Search ctermfg=0 ctermbg=14 guifg=Black guibg=Yellow
+  " 2018-02-14: cobalt2: A less vibrant yellow than Yellow. And not as black as Black.
+  highlight Search term=reverse cterm=underline ctermfg=233 ctermbg=228 gui=underline guifg=#1C1C1C guibg=#F2ED7F
 
   " TERM: highlight MoreMsg term=bold ctermfg=121 gui=bold guifg=SeaGreen
   " SAME: highlight ModeMsg term=bold cterm=bold gui=bold
