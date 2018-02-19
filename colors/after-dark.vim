@@ -323,6 +323,9 @@ function! s:Color__After_Dark__Set_Highlights()
 
   " From github.com/landonb/dubs_appearance. Not a very good name.
   highlight MyErrorMsg term=standout ctermfg=15 ctermbg=4 guibg=LightBlue
+
+  " Project plugin directory line highlight when section is folded.
+  highlight Folded guifg=#cccccc guibg=#333333
 endfunction
 
 function! s:Color__After_Dark__Main()
