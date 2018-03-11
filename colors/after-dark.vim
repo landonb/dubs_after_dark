@@ -243,7 +243,8 @@ function! s:Color__After_Dark__Set_Highlights()
   " TERM: highlight WarningMsg term=standout ctermfg=224 guifg=Red
   highlight WildMenu term=standout ctermfg=0 ctermbg=11 guifg=Black guibg=Yellow
   highlight Folded term=standout ctermfg=14 ctermbg=242 guifg=Cyan guibg=DarkGrey
-  highlight FoldColumn term=standout ctermfg=14 ctermbg=242 guifg=Cyan guibg=Grey
+  "highlight FoldColumn term=standout ctermfg=14 ctermbg=242 guifg=Cyan guibg=Grey
+  highlight FoldColumn term=standout ctermfg=14 ctermbg=242 guifg=Cyan guibg=Black
   highlight DiffAdd term=bold ctermbg=4 guibg=DarkBlue
   highlight DiffChange term=bold ctermbg=5 guibg=DarkMagenta
   highlight DiffDelete term=bold ctermfg=12 ctermbg=6 gui=bold guifg=Blue guibg=DarkCyan
