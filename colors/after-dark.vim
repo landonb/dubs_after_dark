@@ -157,10 +157,63 @@ function! s:Color__After_Dark__Set_Highlights()
   " TERM: highlight Directory term=bold ctermfg=159 guifg=Cyan
   highlight ErrorMsg term=standout ctermfg=15 ctermbg=1 guifg=White guibg=Red
 
-  " When you start a search, IncSearch is the color used to highlight the
-  " first match. I tried white on black, but reverse is really the way to go.
-  "highlight IncSearch term=reverse guifg=#000000 guibg=#FFFFFF gui=underline ctermfg=0 ctermbg=6 cterm=underline
-  " SAME: highlight IncSearch term=reverse cterm=reverse gui=reverse
+  " When you start a search (e.g., with /), IncSearch is the color used to
+  " highlight the next match after the cursor as you type (until you hit
+  " return, and then all matches are highlighted according to Search).
+  "
+  " IncSearch is also the color used to highlight the current match of a
+  " find-and-replace (sub-replace-special) command, e.g., when you run:
+  "
+  "   :.,$s/foo/bar/gc
+  "
+  " The default is the reverse of the Search highlight, but this doesn't
+  " always look the best.
+  "
+  " 2017-12-09: I tried white on black, as an alternative to reverse:
+  "
+  "   highlight IncSearch term=reverse guifg=#000000 guibg=#FFFFFF gui=underline ctermfg=0 ctermbg=6 cterm=underline
+  "
+  " but reverse, reverse, reverse -- the default -- still looks better:
+  "
+  "   highlight IncSearch term=reverse cterm=reverse gui=reverse
+  "
+  " 2018-05-08: I haven't been happy with using the reverse of Search. When
+  " the base color foreground is similar to the Search color background,
+  " then IncSearch's reverse makes the highlight look very much like the
+  " Search highlight -- and it's near impossible to discern which text the
+  " sub-replace-special command is asking confirmation on.
+  "
+  " For example, open a reST file and find-replace text found in an
+  " unformatted section (what follows a double-colon :: indicator).
+  " The text, highlighted per rstLiteralBlock, is already kind of
+  " orangey yellow. And the after-dark Search highlight (currently)
+  " is black on yellow. So the find-replace IncSearch highlight, when
+  " reverse, looks almost exactly like Search, and one cannot easily
+  " (quickly) tell the difference.
+  "
+  " A simple solution is to add standout (bold) and italic:
+  "
+  "   highlight IncSearch term=reverse,standout,italic cterm=reverse,standout,italic gui=reverse,standout,italic
+  "
+  " Note that there's also 'bold' (which looks same as standout to me),
+  " and even 'strikethrough', but 'strikethrough' looks craze.
+  "
+  " Wanna test? Clear first, e.g.,:
+  "
+  "   hi clear IncSearch
+  "   highlight IncSearch ctermbg=233 ctermfg=228 guifg=#F2ED7F guibg=#1C1C1C gui=standout,italic
+  "   hi clear IncSearch
+  "   highlight IncSearch ctermbg=233 ctermfg=228 guifg=#F2ED7F guibg=#D46A6A gui=standout,italic
+  "
+  " Anyway, I think I'll try a red background for now, because it pops better
+  " than reverse for more highlights, I think, and I don't think there's much
+  " that's red except for the Error highlight.
+  "
+  " See also, for shades of red:
+  "
+  "   http://paletton.com/#uid=1000u0kllllaFw0g0qFqFg0w0aF
+  "
+  highlight IncSearch ctermbg=233 ctermfg=228 guifg=#D46A6A guibg=#1C1C1C term=reverse,standout,italic cterm=reverse,standout,italic gui=standout,italic
 
   " 2017-12-09: The Search highlight is ridiculously hard to get right.
   " There's lot more info here:
@@ -199,6 +252,7 @@ function! s:Color__After_Dark__Set_Highlights()
   " Then I tried Black on Yellow, but that's a bit much.
   "  highlight Search ctermfg=0 ctermbg=14 guifg=Black guibg=Yellow
   " 2018-02-14: cobalt2: A less vibrant yellow than Yellow. And not as black as Black.
+  " 2018-05-08: I really cannot see any difference between underline and not.
   highlight Search term=reverse cterm=underline ctermfg=233 ctermbg=228 gui=underline guifg=#1C1C1C guibg=#F2ED7F
 
   " TERM: highlight MoreMsg term=bold ctermfg=121 gui=bold guifg=SeaGreen
