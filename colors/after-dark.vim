@@ -83,7 +83,7 @@ function! s:Color__After_Dark__Reference__Vanilla_Gvim()
   highlight DiffText term=reverse cterm=bold ctermbg=12 gui=bold guibg=Red
   highlight SignColumn term=standout ctermfg=11 ctermbg=8 guifg=Cyan guibg=Grey
   highlight Conceal ctermfg=7 ctermbg=8 guifg=LightGrey guibg=DarkGrey
-  highlight SpellBad term=reverse ctermbg=12 gui=undercurl guisp=Red
+  highlight SpellBad term=underline cterm=underline ctermbg=Red gui=undercurl guisp=Red guibg=#2E3440
   highlight SpellCap term=reverse ctermbg=9 gui=undercurl guisp=Blue
   highlight SpellRare term=reverse ctermbg=13 gui=undercurl guisp=Magenta
   highlight SpellLocal term=underline ctermbg=11 gui=undercurl guisp=Cyan
@@ -390,6 +390,7 @@ function! s:Color__After_Dark__Main()
   "endif
 
   if has('termguicolors')
+    " Enable guifg and guibg in terminals.
     set termguicolors
   endif
 
