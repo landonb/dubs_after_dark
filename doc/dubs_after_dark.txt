@@ -1,6 +1,6 @@
 *dubs_after_dark.txt*	For Vim version >= 7.4.	Last change: 2017 Dec 09
 
-Dubsacks Vim -- Dubs After Dark~
+Dubs Vim -- Dubs After Dark~
 
 COLORFUL MEANING			*dubs-after-dark*
 

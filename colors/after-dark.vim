@@ -8,20 +8,20 @@
 " ----------------------------------------------------------------------------
 " Copyright © 2017 Landon Bouma.
 "
-" This file is part of Dubsacks.
+" This file is part of Dubs Vim.
 "
-" Dubsacks is free software: you can redistribute it and/or
+" Dubs Vim is free software: you can redistribute it and/or
 " modify it under the terms of the GNU General Public License
 " as published by the Free Software Foundation, either version
 " 3 of the License, or (at your option) any later version.
 "
-" Dubsacks is distributed in the hope that it will be useful,
+" Dubs Vim is distributed in the hope that it will be useful,
 " but WITHOUT ANY WARRANTY; without even the implied warranty
 " of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See
 " the GNU General Public License for more details.
 "
 " You should have received a copy of the GNU General Public License
-" along with Dubsacks. If not, see <http://www.gnu.org/licenses/>
+" along with Dubs Vim. If not, see <http://www.gnu.org/licenses/>
 " or write Free Software Foundation, Inc., 51 Franklin Street,
 "                     Fifth Floor, Boston, MA 02110-1301, USA.
 " ===================================================================
@@ -109,7 +109,7 @@ function! s:Color__After_Dark__Reference__Vanilla_Gvim()
 endfunction
 
 " NOTE: This function is not run; it's just for reference.
-function! s:Color__After_Dark__Reference__Base_Dubsacks()
+function! s:Color__After_Dark__Reference__Base_Dubs_Vim()
   " 2017-12-09: If you run gVim without '--noplugin' and then generate clear
   " highlights and look at the list of highlights, you'll see the same defaults
   " as recorded Color__After_Dark__Reference__Vanilla_Gvim(), and these additional:

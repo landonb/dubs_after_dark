@@ -1,5 +1,5 @@
-Dubsacks Vim — Dubs After Dark
-==============================
+Dubs Vim — Dubs After Dark
+==========================
 
 Vibrant white and light text on a black background.
 
