@@ -1,5 +1,8 @@
-Dubs Vim — Dubs After Dark
-==========================
+##################################
+Dubs Vim |em_dash| Dubs After Dark
+##################################
+
+.. |em_dash| unicode:: 0x2014 .. em dash
 
 Vibrant white and light text on a black background.
 
@@ -8,7 +11,7 @@ Vibrant white and light text on a black background.
 *The Dubs After Dark color scheme and* `Dubs Mescaline <https://github.com/landonb/dubs_mescaline>`__ *status line.*
 
 About This Plugin
------------------
+=================
 
 This plugin provides an opinionated negative polarity color scheme.
 
@@ -58,7 +61,7 @@ check out
 `jellybeans.vim <https://github.com/nanotech/jellybeans.vim>`__.
 
 Installation
-------------
+============
 
 Standard Pathogen installation:
 
