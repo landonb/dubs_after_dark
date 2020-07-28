@@ -381,6 +381,18 @@ function! s:Color__After_Dark__Set_Highlights()
 
   " Project plugin directory line highlight when section is folded.
   highlight Folded guifg=#cccccc guibg=#333333
+
+  " 2020-07-21: (lb): I'm tired on the gross orangy literal block color,
+  " because I use literal blocks for quoting articles a lot. A green
+  " color is much easier to read and more pleasant to view.
+  " - This overrides the definition from runtime/syntax/rst.vim:
+  "     hi def link rstLiteralBlock                 String
+  "   where
+  "     SynLink String		Constant
+  "   and Constant is defined in this file as #ffa0a0.
+  highlight rstLiteralBlock guifg=#60ff60
+  highlight rstDelimiter guifg=#60ff60
+
 endfunction
 
 function! s:Color__After_Dark__Main()
