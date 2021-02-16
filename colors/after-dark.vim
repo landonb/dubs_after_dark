@@ -299,10 +299,58 @@ function! s:Color__After_Dark__Set_Highlights()
   highlight Folded term=standout ctermfg=14 ctermbg=242 guifg=Cyan guibg=DarkGrey
   "highlight FoldColumn term=standout ctermfg=14 ctermbg=242 guifg=Cyan guibg=Grey
   highlight FoldColumn term=standout ctermfg=14 ctermbg=242 guifg=Cyan guibg=Black
-  highlight DiffAdd term=bold ctermbg=4 guibg=DarkBlue
-  highlight DiffChange term=bold ctermbg=5 guibg=DarkMagenta
-  highlight DiffDelete term=bold ctermfg=12 ctermbg=6 gui=bold guifg=Blue guibg=DarkCyan
-  highlight DiffText term=reverse cterm=bold ctermbg=9 gui=bold guibg=Red
+
+  " 2021-02-15: Only took a decade, but finally using Vimdiff, at least
+  "             by way of vim-mergetool (by way of `git mergetool`):
+  "
+  "               https://github.com/samoshkin/vim-mergetool
+  "
+  "             And that's when I realized after-dark's Diff* highlights
+  "             were way too difficult to read!
+  "
+  " - Here are the historical after-dark Diff* highlights, which are
+  "   fairly close to the default Vim highlights:
+  "
+  "     highlight DiffAdd term=bold ctermbg=4 guibg=DarkBlue
+  "     highlight DiffChange term=bold ctermbg=5 guibg=DarkMagenta
+  "     highlight DiffDelete term=bold ctermfg=12 ctermbg=6 gui=bold guifg=Blue guibg=DarkCyan
+  "     highlight DiffText term=reverse cterm=bold ctermbg=9 gui=bold guibg=Red
+  "
+  "   - Note that it's really the DiffText guibg=Red and not setting the
+  "     foreground that makes it hard to read. (I'm not sure if there's a
+  "     default foreground color being used, or if the particular foreground
+  "     for each token is applied, but either way it looks bad. We need to
+  "     be deliberate about the foreground color.)
+  "
+  " - But this colorscheme was not the only one with poor Diff highlights.
+  "
+  " - I demoed a number of colorschemes from flazz:
+  "
+  "     https://github.com/flazz/vim-colorschemes/tree/master/colors
+  "
+  "   and the majority that I tested used similarly difficult to read
+  "   red backgrounds for diff highlights. (Though I didn't test a large
+  "   enough sample size to infer that it's a widespread problem, just
+  "   that of the (very) few colorschemes that I did test, the Diff
+  "   highlight colors did not seem like something that was necessarily
+  "   customized for the colorschemes (indeed, how many Vimmers also
+  "   vimdiff? it feels like a niche).)
+  "
+  " - Of the ten or twenty colorschemes that I did test, these four
+  "   looked the radest:
+  "
+  "     triplejelly, understated, vorange, and zazen.
+  "
+  "   But I liked zazen the best, so I copied its Diff* highlights.
+  "
+  " - The following highlights are from zazen (thanks, zazen!):
+  "
+  "     https://github.com/flazz/vim-colorschemes/blob/master/colors/zazen.vim
+  highlight DiffAdd term=bold ctermfg=40 ctermbg=22 guifg=#00cc00 guibg=#002200
+  highlight DiffChange term=bold ctermfg=209 ctermbg=52 guifg=#ff9955 guibg=#220000
+  highlight DiffDelete term=bold ctermfg=9 ctermbg=52 guifg=#ff0000 guibg=#220000
+  highlight DiffText term=reverse ctermfg=9 ctermbg=52 guifg=#ff0000 guibg=#220000
+
   highlight SignColumn term=standout ctermfg=14 ctermbg=242 guifg=Cyan guibg=Grey
   " TERM: highlight Conceal ctermfg=7 ctermbg=242 guifg=LightGrey guibg=DarkGrey
 
