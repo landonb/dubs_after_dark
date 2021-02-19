@@ -375,7 +375,22 @@ function! s:Color__After_Dark__Set_Highlights()
   "highlight ColorColumn ctermfg=lightyellow ctermbg=darkgreen guifg=#D8DEE9 guibg=#2E3440
   highlight ColorColumn term=reverse ctermfg=14 ctermbg=2 guifg=#D8DEE9 guibg=#2E3440
 
-  " SAME: highlight link QuickFixLine Search
+  " 2021-02-18: This was same as Search, e.g.,
+  "   highlight link QuickFixLine Search
+  " since I created this colorscheme. Which is essentialy black on yellow.
+  " I.e., very bright and distracting. And Vim highlights the first result
+  " ('error') in the quickfix window as soon as it opens the window, even
+  " though you haven't opened any files from quickfix yet. But now (why,
+  " all of a sudden? because I'm forever refining Vim! =) I think the bright
+  " yellow background is more distracting than I like -- while the quickfix
+  " window is open, the bright yellow highlight lightly tugs at my attention,
+  " even when I'm not looking at the quickfix window. So let's try a subdued
+  " yellow background, aka very dark grey without the blues; and without
+  " changing the foreground colors (which are cyan for the path (qfFileName),
+  " gray for line numbers (qfLineNr), and white for the matching line text
+  " (which my <F10> inspector reports as not being assigned a category)).
+  highlight QuickFixLine guibg=#333300
+
   " TERM: highlight StatusLineTerm term=bold,reverse cterm=bold ctermfg=0 ctermbg=121 gui=bold guifg=bg guibg=LightGreen
   " TERM: highlight StatusLineTermNC term=reverse ctermfg=0 ctermbg=121 guifg=bg guibg=LightGreen
 
