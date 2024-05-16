@@ -242,9 +242,20 @@ function! s:Color__After_Dark__Set_Highlights()
   highlight CursorColumn term=reverse ctermbg=234 guibg=#FFC600
   highlight CursorLineNr term=bold ctermfg=123 guifg=#80FCFF
   highlight CursorLine term=underline ctermbg=235 guibg=#FFC600
-  "highlight Cursor ctermfg=16 ctermbg=220 guifg=#193549 guibg=#FFC600
-  " Tweak cobalt2 to contrast better with the Search highlight
-  highlight Cursor term=bold cterm=bold guifg=#121212 guibg=#afd700
+
+  " 2024-05-16: Use gui=reverse so normal mode (block) and insert
+  " mode (caret) cursors are *always* visible, regardless of highlight.
+  highlight Cursor gui=reverse guifg=NONE guibg=NONE
+  highlight iCursor gui=reverse guifg=NONE guibg=NONE
+  " SAVVY: You may want to adjust the cursor size and blink.
+  " - REFER: See :help guicursor
+  " - In the author's experience, cursor blink is erratic (because
+  "   something causes periodic :reload, like a heartbeat, which
+  "   resets the blink pattern and interrupts the animation), so
+  "   I like running without blink, and with a little wider caret,
+  "   e.g.,
+  "     set guicursor+=n-c-v:block-blinkon0-Cursor
+  "     set guicursor+=i:ver29-blinkon0-iCursor
 
   " 2018-02-01 19:52: STILL FIGURING THIS OUT!
   " I tried a light pink background for search matches, but it's too subtle.
