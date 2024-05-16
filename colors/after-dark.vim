@@ -1,7 +1,7 @@
-" File: dubs_appearance.vim
+" File: after-dark.vim
 " Author: Landon Bouma (landonb &#x40; retrosoft &#x2E; com)
 " Last Modified: 2017.12.17
-" Project Page: https://github.com/landonb/dubs_appearance
+" Project Page: https://github.com/landonb/dubs_after_dark
 " Summary: Nighttime! Complete Vim highlight file
 " License: GPLv3
 " vim:tw=0:ts=2:sw=2:et:norl:ft=vim
