@@ -4,11 +4,12 @@ Dubs Vim |em_dash| Dubs After Dark
 
 .. |em_dash| unicode:: 0x2014 .. em dash
 
-Vibrant white and light text on a black background.
+Striking Vim `colorscheme <https://vimhelp.org/usr_06.txt.html>__`!
+Vibrant white and colorful foreground text on a truly black background.
 
 .. image:: doc/color-scheme-test-ruby-and-javascript.png
 
-*The Dubs After Dark color scheme and* `Dubs Mescaline <https://github.com/landonb/dubs_mescaline>`__ *status line.*
+*Dubs After Dark colorscheme pairs well with* `Dubs Mescaline <https://github.com/landonb/dubs_mescaline>`__ *status line.*
 
 About This Plugin
 =================
