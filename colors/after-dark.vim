@@ -579,11 +579,6 @@ endfunction
 " ***
 
 function! s:Color__After_Dark__Main()
-
-  "if exists("syntax_on")
-  "  syntax reset
-  "endif
-
   if has('termguicolors')
     " Enable guifg and guibg in terminals.
     set termguicolors
