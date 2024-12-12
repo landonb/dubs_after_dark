@@ -584,7 +584,7 @@ function! s:Color__After_Dark__Main()
     set termguicolors
   endif
 
-  " NOTE: &t_Co is number of colors. 256 in terminal; unset in GUI.
+  " SAVVY: &t_Co is number of colors. 256 in terminal; unset in GUI.
 
   " PROBABLY/2017-12-07: May need to tweak GUI vs non-GUI colors.
   "  if has("gui_running") || (has('termguicolors') && &termguicolors)
