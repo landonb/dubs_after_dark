@@ -561,6 +561,24 @@ endfunction
 
 " ***
 
+" The default background is not exactly 'true' black, because
+" #000000 is not as black as some shades of very dark gray on
+" some displays. (At least for some olders monitors I've used;
+" on my current BenQ QHD I don't see a difference between
+" #000000 and #060606.)
+"
+" Some other background colors you might like if the contrast is
+" too much:
+"
+"   " Dark grayish black
+"   let g:dubs_after_dark_background = "1B1B1A"
+"   " Less dark gray black
+"   let g:dubs_after_dark_background = "212121"
+"   " Slightly bluish black
+"   let g:dubs_after_dark_background = "131d28"
+"   " Slightly reddish black
+"   let g:dubs_after_dark_background = "292123"
+
 " 2017-11-12: Weird. In the terminal ctermbg=Black or =0 is same as =DarkGray/DarkGrey.
 "   But using 8 gets us black... or any number not negative or 0-7....
 "   Also, ctermbg=none works.
