@@ -24,6 +24,106 @@
 
 " ----------------------------------------------------------------------------
 
+" REFER:
+"
+" - Reset to default Vim colorscheme:
+"
+"     :colorscheme default
+"
+" - Some docs suggest running `:set background=dark` if something
+"   doesn't look right, but author has never had to do so.
+"
+" - Demo other colorschemes:
+"
+"   - Note that you don't need to load the package, even if it's
+"     under its opt/ directory.
+"
+"     " E.g., if the colorscheme is at
+"     "   ~/.vim/pack/flazz/opt/vim-colorschemes
+"     " you call can :colo with loading the plugin first:
+"     "
+"     "   :packadd vim-colorschemes
+"
+" - Try Nord Vim:
+"   https://github.com/arcticicestudio/nord-vim
+"
+"     :colorscheme nord
+"
+" - Try Vim through the eyes of Tim Pope:
+"   https://github.com/tpope/vim-vividchalk
+"
+"     :colorscheme vividchalk
+"
+" - Try Jellybeans:
+"
+"     :colorscheme jellybeans
+"
+" - Try one of the 971 color schemes that flazz has aggregated:
+"   https://github.com/flazz/vim-colorschemes
+"
+"     " Here's a random sampling of the 971 colorschemes...
+"     :colorscheme wombat
+"     :colorscheme molokai
+"     :colorscheme 0x7A69_dark
+"     :colorscheme dark
+"     :colorscheme dark2 | echom 'not bad'
+"     :colorscheme darkdefault
+"     :colorscheme perfectdark
+"     :colorscheme slatedark
+"     :colorscheme anotherdark
+"     :colorscheme basic-dark
+"     :colorscheme codeblocks_dark
+"     :colorscheme codedark
+"     :colorscheme darkblack | echom 'not bad'
+"     :colorscheme darkdevel | echom 'ick, sets cursorline'
+"     :colorscheme darkzen
+"     :colorscheme duotone-dark
+"     :colorscheme duotone-darkspace
+"     :colorscheme flattened_dark
+"     :colorscheme neodark
+"     :colorscheme nofrils-dark
+"     " :colorscheme onedark | echom 'Has errors'
+"     :colorscheme rdark-terminal
+"     :colorscheme rdark
+"     :colorscheme simple_dark
+"     :colorscheme space-vim-dark
+"     :colorscheme stonewashed-dark-256
+"     :colorscheme stonewashed-dark-gui
+"     :colorscheme tigrana-256-dark
+"     :colorscheme vydark
+"
+" - When you're down playing around, come back to after-dark:
+"
+"     :colorscheme after-dark
+"
+"   - Note you can reload this script instead:
+"
+"       :exec 'source '.bufname('%')<CR>
+"       " Or run:
+"       :runtime colors/after-dark.vim
+"
+"     - Or hit <F9> if you're using the source-reloader:
+"       https://github.com/landonb/vim-source-reloader
+"
+"     But if you load from source, the Dub Mescaline status line
+"     is a little off, which you can restore with this function
+"     call (to reset the User1...User7 highlights which were
+"     cleared by this scheme's `:highlight clear` call (below)):
+"
+"         " After sourcing this script, run:
+"         :call SetStatusLineHighlights()
+"         " Or run this instead:
+"         :unlet g:plugin_dubs_mescaline
+"         :runtime plugin/dubs_mescaline.vim
+"
+"     You can find Dubs Mescaline here:
+"     https://github.com/landonb/dubs_mescaline#🍄
+"
+"     Or locally at:
+"     ~/.vim/pack/landonb/start/dubs_mescaline/plugin/dubs_mescaline.vim
+
+" ----------------------------------------------------------------------------
+
 " NOTE: This function is not run; it's just for reference.
 function! s:Color__After_Dark__Reference__Vanilla_Gvim()
   " =================================
