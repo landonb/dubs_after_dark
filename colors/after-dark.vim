@@ -586,13 +586,6 @@ function! s:Color__After_Dark__Main()
 
   " SAVVY: &t_Co is number of colors. 256 in terminal; unset in GUI.
 
-  " PROBABLY/2017-12-07: May need to tweak GUI vs non-GUI colors.
-  "  if has("gui_running") || (has('termguicolors') && &termguicolors)
-  "    let s:true_color = 1
-  "  else
-  "    let s:true_color = 0
-  "  endif
-
   " These should both have the same outcome:
   highlight clear
   "colorscheme default
