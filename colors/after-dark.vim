@@ -586,9 +586,11 @@ function! s:Color__After_Dark__Main()
 
   " SAVVY: &t_Co is number of colors. 256 in terminal; unset in GUI.
 
-  " These should both have the same outcome:
+  " Calling `:hi clear` is effectively the same as `:colo default`.
+  " - Note if you call this after loading after-dark, this hides
+  "   the insert cursor, which you can restore thusly:
+  "     :hi iCursor gui=reverse guifg=NONE guibg=NONE
   highlight clear
-  "colorscheme default
 
   set background=dark
 
