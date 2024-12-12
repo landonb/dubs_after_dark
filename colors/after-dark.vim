@@ -7,17 +7,26 @@
 
 " ----------------------------------------------------------------------------
 
-" User-tweakable settings.
+" USAGE:
 "
-" So far, just the background is tweakable.
+" To use Dubs After Dark, simply load it:
 "
-" Obviously, you could just as easily copy
-" this file and make your own color, so it
-" does not aim to be very configurable.
+"   :colorscheme after-dark
+"
+" The only user setting is the background color.
+"
+" - It deaults to basically black:
+"
+"   let g:dubs_after_dark_background = "060606"
+"
+" And rather than add other configurable options, you're encouraged
+" to instead fork this project and make it your own colorscheme.
 
 if !exists("g:dubs_after_dark_background")
   let g:dubs_after_dark_background = "060606"
 endif
+
+" ----------------------------------------------------------------------------
 
 " NOTE: This function is not run; it's just for reference.
 function! s:Color__After_Dark__Reference__Vanilla_Gvim()
