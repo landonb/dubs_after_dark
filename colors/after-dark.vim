@@ -463,6 +463,20 @@ function! s:Color__After_Dark__Set_Highlights()
 
 endfunction
 
+" ***
+
+" 2017-11-12: Weird. In the terminal ctermbg=Black or =0 is same as =DarkGray/DarkGrey.
+"   But using 8 gets us black... or any number not negative or 0-7....
+"   Also, ctermbg=none works.
+" Set the background, e.g.,
+"   highlight Normal gui=NONE guifg=White guibg=#060606 ctermfg=White ctermbg=none
+  exe 'highlight Normal gui=NONE '
+    \ 'guifg=White guibg=#' . g:dubs_after_dark_background
+    \ 'ctermfg=White ctermbg=none'
+endfunction
+
+" ***
+
 function! s:Color__After_Dark__Main()
 
   "if exists("syntax_on")
@@ -488,15 +502,8 @@ function! s:Color__After_Dark__Main()
   "colorscheme default
 
   set background=dark
-  
-  " 2017-11-12: Weird. In the terminal ctermbg=Black or =0 is same as =DarkGray/DarkGrey.
-  "   But using 8 gets us black... or any number not negative or 0-7....
-  "   Also, ctermbg=none works.
-  " Set the background, e.g.,
-  "   highlight Normal gui=NONE guifg=White guibg=#060606 ctermfg=White ctermbg=none
-  exe 'highlight Normal gui=NONE '
-    \ 'guifg=White guibg=#' . g:dubs_after_dark_background
-    \ 'ctermfg=White ctermbg=none'
+
+  call s:Color__After_Dark__Set_Normal_Highlight()
 
   " Set the remaining highlights.
   call s:Color__After_Dark__Set_Highlights()
