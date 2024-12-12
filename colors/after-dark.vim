@@ -98,6 +98,8 @@ function! s:Color__After_Dark__Reference__Vanilla_Gvim()
   highlight ToolbarButton cterm=bold ctermfg=0 ctermbg=7 gui=bold guifg=Black guibg=LightGrey
 endfunction
 
+" ***
+
 " NOTE: This function is not run; it's just for reference.
 function! s:Color__After_Dark__Reference__Base_Dubs_Vim()
   " 2017-12-09: If you run gVim without '--noplugin' and then generate clear
@@ -115,6 +117,8 @@ function! s:Color__After_Dark__Reference__Base_Dubs_Vim()
   highlight Error term=reverse ctermfg=15 ctermbg=12 guifg=White guibg=Red
   highlight Todo term=standout ctermfg=0 ctermbg=14 guifg=Blue guibg=Yellow
 endfunction
+
+" ----------------------------------------------------------------------------
 
 " This function sets the highlights for Dubs After Dark.
 "   2017-12-09 (landonb): I think a lot of these colors were based
