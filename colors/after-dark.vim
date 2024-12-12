@@ -22,10 +22,6 @@
 " And rather than add other configurable options, you're encouraged
 " to instead fork this project and make it your own colorscheme.
 
-if !exists("g:dubs_after_dark_background")
-  let g:dubs_after_dark_background = "060606"
-endif
-
 " ----------------------------------------------------------------------------
 
 " NOTE: This function is not run; it's just for reference.
@@ -470,6 +466,11 @@ endfunction
 "   Also, ctermbg=none works.
 " Set the background, e.g.,
 "   highlight Normal gui=NONE guifg=White guibg=#060606 ctermfg=White ctermbg=none
+function! s:Color__After_Dark__Set_Normal_Highlight()
+  if !exists("g:dubs_after_dark_background")
+    let g:dubs_after_dark_background = "060606"
+  endif
+
   exe 'highlight Normal gui=NONE '
     \ 'guifg=White guibg=#' . g:dubs_after_dark_background
     \ 'ctermfg=White ctermbg=none'
