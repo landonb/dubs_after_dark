@@ -561,6 +561,44 @@ endfunction
 
 " ***
 
+" Restore the cursor line highlight, sorta.
+" - The author doesn't like the current line highlight (I prefer it
+"   off), and it's not really part of the colorscheme (while it's a
+"   highlight of sorts, it's not a `:highlight`).
+" - So while (my personal feel is that) colorschemes should not set
+"   it, some do (at least 'darkdevel' from flazz/vim-colorschemes).
+" - So let's record its initial value and use that on subsequent
+"   re-enablements. (Then at least if author demos some other
+"   colorschemes and returns to after-dark, I don't also have to
+"   manually disable the cursorline.)
+" - Note also that cursorline is local to the window, which should
+"   be a clear reason *not* to touch it from a colorscheme. (And for
+"   whatever reason when you run `:colo darkdevel`, the line highlight
+"   only applies to the window from which you ran the command!) So the
+"   the best way to clear it is with :windo (which makes me a little
+"   uneasy... but I suppose if any user has an issue with this logic,
+"   lemme know and we can figure out what logic makes the most sense).
+function! s:Color__After_Dark__Restore_Cursorline()
+  if !exists("g:dubs_afer_dark_cursorline")
+    let g:dubs_afer_dark_cursorline = &cursorline
+  else
+    " Ugh, :windo is noticeably slow. So avoid unless user opts-in, e.g.:
+    "   " From user's config
+    "   let g:dubs_afer_dark_cursorline_do_windo = 1
+    if exists("g:dubs_afer_dark_cursorline_do_windo") && g:dubs_afer_dark_cursorline_do_windo
+      let l:prev_window = winnr()
+      windo execute "let &cursorline = " .. g:dubs_afer_dark_cursorline
+      exe l:prev_window . "wincmd w"
+    else
+      " - Just 'fix' the current window. This'll catch most uses
+      "   where you're demoing colorschemes from the same window.
+      execute "let &cursorline = " .. g:dubs_afer_dark_cursorline
+    endif
+  endif
+endfunction
+
+" ***
+
 " The default background is not exactly 'true' black, because
 " #000000 is not as black as some shades of very dark gray on
 " some displays. (At least for some olders monitors I've used;
@@ -609,6 +647,8 @@ function! s:Color__After_Dark__Main()
   "   the insert cursor, which you can restore thusly:
   "     :hi iCursor gui=reverse guifg=NONE guibg=NONE
   highlight clear
+
+  call s:Color__After_Dark__Restore_Cursorline()
 
   set background=dark
 
