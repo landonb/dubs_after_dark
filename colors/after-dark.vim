@@ -634,6 +634,22 @@ endfunction
 
 " ***
 
+" After using after-dark, many times when you load another colorscheme
+" the insert cursor becomes invisible (`:hi iCursor` shows 'xxx cleared').
+" - So whenever the colorscheme changes, ensure you can see the cursor.
+" - DUNNO: Same if you `:hi clear` before `:colorscheme default`, but
+"   after-dark only makes :highlight calls (except for what's in this
+"   function). So you'd think this wouldn't happen...
+function! s:Color__After_Dark__Set_ColorScheme_Autocmd()
+  augroup ansible_vim_ftyaml_ansible
+    au!
+
+    autocmd ColorScheme * highlight iCursor gui=reverse guifg=NONE guibg=NONE
+  augroup END
+endfunction
+
+" ***
+
 function! s:Color__After_Dark__Main()
   if has('termguicolors')
     " Enable guifg and guibg in terminals.
@@ -653,6 +669,8 @@ function! s:Color__After_Dark__Main()
   set background=dark
 
   call s:Color__After_Dark__Set_Normal_Highlight()
+
+  call s:Color__After_Dark__Set_ColorScheme_Autocmd()
 
   " Set the remaining highlights.
   call s:Color__After_Dark__Set_Highlights()
