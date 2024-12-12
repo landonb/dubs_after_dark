@@ -221,7 +221,7 @@ function! s:Color__After_Dark__Set_Highlights()
   " nord's: let s:nord4_gui = "#D8DEE9" / s:nord0_gui = "#2E3440"
   "highlight Cursor guifg=#2E3440 guibg=#D8DEE9
   "highlight Cursor guifg=#2E3440 guibg=#ECEFF4
-  " A bluish background color: 
+  " A bluish background color:
   "highlight Search term=reverse guifg=#3B4252 guibg=#88C0D0 ctermfg=0 ctermbg=6
   " This is close. Light text on light pink background.
   " 2018-02-10: Perhaps this.
