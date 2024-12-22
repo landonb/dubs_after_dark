@@ -102,8 +102,8 @@
 "       " Or run:
 "       :runtime colors/after-dark.vim
 "
-"     - Or hit <F9> if you're using the source-reloader:
-"       https://github.com/landonb/vim-source-reloader
+"     - Or hit <F9> to reload this plugin (or :source it).
+"       https://github.com/embrace-vim/vim-source-reloader#↩️
 "
 "     But if you load from source, the Dub Mescaline status line
 "     is a little off, which you can restore with this function
