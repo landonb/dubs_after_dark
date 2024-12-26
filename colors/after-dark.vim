@@ -5,7 +5,7 @@
 " License: GPLv3
 " Copyright © 2017-2021, 2024 Landon Bouma.
 
-" ----------------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 " USAGE:
 "
@@ -22,7 +22,7 @@
 " And rather than add other configurable options, you're encouraged
 " to instead fork this project and make it your own colorscheme.
 
-" ----------------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 " REFER:
 "
@@ -122,7 +122,7 @@
 "     Or locally at:
 "     ~/.vim/pack/landonb/start/dubs_mescaline/plugin/dubs_mescaline.vim
 
-" ----------------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 " NOTE: This function is not run; it's just for reference.
 function! s:Color__After_Dark__Reference__Vanilla_Gvim()
@@ -214,7 +214,7 @@ function! s:Color__After_Dark__Reference__Base_Dubs_Vim()
   highlight Todo term=standout ctermfg=0 ctermbg=14 guifg=Blue guibg=Yellow
 endfunction
 
-" ----------------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 " This function sets the highlights for Dubs After Dark.
 "   2017-12-09 (landonb): I think a lot of these colors were based
