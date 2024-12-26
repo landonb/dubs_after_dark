@@ -540,9 +540,6 @@ function! s:Color__After_Dark__Set_Highlights()
   "highlight Todo term=standout ctermfg=3 guifg=#000000 guibg=#C6C6C6
   highlight Todo term=standout ctermfg=0 ctermbg=11 guifg=Blue guibg=Yellow
 
-  " From github.com/landonb/dubs_appearance. Not a very good name.
-  highlight MyErrorMsg term=standout ctermfg=15 ctermbg=4 guibg=LightBlue
-
   " Project plugin directory line highlight when section is folded.
   highlight Folded guifg=#cccccc guibg=#333333
 
