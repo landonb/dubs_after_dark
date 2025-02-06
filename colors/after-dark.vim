@@ -312,7 +312,7 @@ function! s:Color__After_Dark__Set_Highlights()
   "   :h Cursor\>
   " Default cursor is inverse of text:
   "  highlight Cursor guifg=bg guibg=fg
-  " which is same as this Search highlighting:
+  " which is same as this Search highlight:
   "  highlight Search guibg=White guifg=Black
   "
   "highlight Cursor guifg=black guibg=white
