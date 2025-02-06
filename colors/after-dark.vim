@@ -148,10 +148,15 @@ function! s:Color__After_Dark__Reference__Vanilla_Gvim()
   highlight ErrorMsg term=standout ctermfg=15 ctermbg=4 guifg=White guibg=Red
   highlight IncSearch term=reverse cterm=reverse gui=reverse
   highlight Search term=reverse ctermfg=0 ctermbg=14 guifg=Black guibg=Yellow
+  highlight Cursor guifg=bg guibg=fg
+  highlight lCursor guifg=bg guibg=fg
+  highlight CursorColumn term=reverse ctermbg=8 guibg=Grey40
+  highlight CursorLine term=underline cterm=underline guibg=Grey40
+  highlight CursorLineNr term=bold ctermfg=14 gui=bold guifg=Yellow
+  highlight LineNr term=underline ctermfg=14 guifg=Yellow
+  highlight ColorColumn term=reverse ctermbg=4 guibg=DarkRed
   highlight MoreMsg term=bold ctermfg=10 gui=bold guifg=SeaGreen
   highlight ModeMsg term=bold cterm=bold gui=bold
-  highlight LineNr term=underline ctermfg=14 guifg=Yellow
-  highlight CursorLineNr term=bold ctermfg=14 gui=bold guifg=Yellow
   highlight Question term=standout ctermfg=10 gui=bold guifg=Green
   highlight StatusLine term=bold,reverse cterm=bold,reverse gui=bold,reverse
   highlight StatusLineNC term=reverse cterm=reverse gui=reverse
@@ -180,14 +185,9 @@ function! s:Color__After_Dark__Reference__Vanilla_Gvim()
   highlight TabLine term=underline cterm=underline ctermfg=15 ctermbg=8 gui=underline guibg=DarkGrey
   highlight TabLineSel term=bold cterm=bold gui=bold
   highlight TabLineFill term=reverse cterm=reverse gui=reverse
-  highlight CursorColumn term=reverse ctermbg=8 guibg=Grey40
-  highlight CursorLine term=underline cterm=underline guibg=Grey40
-  highlight ColorColumn term=reverse ctermbg=4 guibg=DarkRed
   highlight link QuickFixLine Search
   highlight StatusLineTerm term=bold,reverse cterm=bold ctermfg=0 ctermbg=10 gui=bold guifg=bg guibg=LightGreen
   highlight StatusLineTermNC term=reverse ctermfg=0 ctermbg=10 guifg=bg guibg=LightGreen
-  highlight Cursor guifg=bg guibg=fg
-  highlight lCursor guifg=bg guibg=fg
   highlight MatchParen term=reverse ctermbg=3 guibg=DarkCyan
   highlight Normal ctermfg=15 guifg=White guibg=#060606
   highlight ToolbarLine term=underline ctermbg=8 guibg=Grey50
