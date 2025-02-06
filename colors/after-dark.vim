@@ -553,7 +553,6 @@ function! s:Color__After_Dark__Set_Highlights()
   "   and Constant is defined in this file as #ffa0a0.
   highlight rstLiteralBlock guifg=#60ff60
   highlight rstDelimiter guifg=#60ff60
-
 endfunction
 
 " ***
