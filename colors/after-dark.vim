@@ -119,8 +119,8 @@
 "     You can find Dubs Mescaline here:
 "     https://github.com/landonb/dubs_mescaline#🍄
 "
-"     Or locally at:
-"     ~/.vim/pack/landonb/start/dubs_mescaline/plugin/dubs_mescaline.vim
+"     - CXREF: Or on a DepoXy environment locally at:
+"       ~/.kit/nvim/landonb/start/dubs_mescaline/plugin/dubs_mescaline.vim
 
 " -------------------------------------------------------------------
 
