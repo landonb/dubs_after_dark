@@ -637,7 +637,7 @@ endfunction
 "   after-dark only makes :highlight calls (except for what's in this
 "   function). So you'd think this wouldn't happen...
 function! s:Color__After_Dark__Set_ColorScheme_Autocmd()
-  augroup ansible_vim_ftyaml_ansible
+  augroup dubs-after-dark-colorscheme
     au!
 
     autocmd ColorScheme * highlight iCursor gui=reverse guifg=NONE guibg=NONE
