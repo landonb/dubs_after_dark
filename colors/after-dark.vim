@@ -662,7 +662,13 @@ function! s:Color__After_Dark__Main()
 
   call s:Color__After_Dark__Restore_Cursorline()
 
-  set background=dark
+  " DUNNO: When starting Vim in the terminal, calling `set background=dark`
+  " spews a control sequence atop the first line, which you cannot edit,
+  " and which disappears when you scroll, e.g.,:
+  "   ^[[?12;2$y
+  if has('nvim') || has('gui_running')
+    set background=dark
+  endif
 
   call s:Color__After_Dark__Set_Normal_Highlight()
 
