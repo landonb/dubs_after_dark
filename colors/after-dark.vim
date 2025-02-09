@@ -672,5 +672,5 @@ function! s:Color__After_Dark__Main()
   call s:Color__After_Dark__Set_Highlights()
 endfunction
 
-call <SID>Color__After_Dark__Main()
+call s:Color__After_Dark__Main()
 
