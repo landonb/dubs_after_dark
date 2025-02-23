@@ -196,22 +196,70 @@ endfunction
 
 " ***
 
+" REFER/2025-01-20: Neovim has its own set of default colors for light and dark backgrounds.
+" - See the `highlight_init_dark` lookup:
+"     https://github.com/neovim/neovim/blob/v0.10.3/src/nvim/highlight_group.c#L413-L496
+" - You can also `nvim --noplugin` (or `neovide -- --noplugin`) to inspect manually.
+"
+" SAVVY/2025-01-20: Dubs After Dark now specifies additional highlights: those that
+" Neovim customizes. But Dubs After Dark just plumbs in the original default Vim value.
+" - This colorscheme is not very clever when compared to the popular
+"   colorschemes most people use.
+
 " NOTE: This function is not run; it's just for reference.
-function! s:Color__After_Dark__Reference__Base_Dubs_Vim()
-  " 2017-12-09: If you run gVim without '--noplugin' and then generate clear
-  " highlights and look at the list of highlights, you'll see the same defaults
-  " as recorded Color__After_Dark__Reference__Vanilla_Gvim(), and these additional:
-  highlight Comment term=bold ctermfg=11 guifg=#80a0ff
-  highlight Constant term=underline ctermfg=13 guifg=#ffa0a0
-  highlight Special term=bold ctermfg=12 guifg=Orange
-  highlight Identifier term=underline cterm=bold ctermfg=11 guifg=#40ffff
-  highlight Statement term=bold ctermfg=14 gui=bold guifg=#ffff60
-  highlight PreProc term=underline ctermfg=9 guifg=#ff80ff
-  highlight Type term=underline ctermfg=10 gui=bold guifg=#60ff60
-  highlight Underlined term=underline cterm=underline ctermfg=9 gui=underline guifg=#80a0ff
-  highlight Ignore ctermfg=0 guifg=bg
-  highlight Error term=reverse ctermfg=15 ctermbg=12 guifg=White guibg=Red
-  highlight Todo term=standout ctermfg=0 ctermbg=14 guifg=Blue guibg=Yellow
+function! s:Color__After_Dark__Reference__Neovim_Init_Dark()
+  highlight SpecialKey        guifg=NvimDarkGrey4
+  highlight link EndOfBuffer  NonText
+  highlight NonText           guifg=NvimDarkGrey4
+  highlight Directory         ctermfg=14 guifg=NvimLightCyan
+  highlight ErrorMsg          ctermfg=9 guifg=NvimLightRed
+  highlight link IncSearch    CurSearch
+  highlight Search            ctermfg=0 ctermbg=11 guifg=NvimLightGrey1 guibg=NvimDarkYellow
+  highlight Cursor            guifg=bg guibg=fg
+  highlight lCursor           guifg=bg guibg=fg
+  highlight CursorColumn      guibg=NvimDarkGrey3
+  highlight CursorLine        guibg=NvimDarkGrey3
+  highlight CursorLineNr      cterm=bold gui=bold
+  highlight LineNr            guifg=NvimDarkGrey4
+  highlight ColorColumn       cterm=reverse guibg=NvimDarkGrey4
+  highlight MoreMsg           ctermfg=14 guifg=NvimLightCyan
+  highlight ModeMsg           ctermfg=10 guifg=NvimLightGreen
+  highlight Question          ctermfg=14 guifg=NvimLightCyan
+  highlight StatusLine        cterm=reverse guifg=NvimDarkGrey3 guibg=NvimLightGrey3
+  highlight StatusLineNC      cterm=bold,underline guifg=NvimLightGrey3 guibg=NvimDarkGrey3
+  highlight link VertSplit    WinSeparator
+  highlight Title             cterm=bold gui=bold guifg=NvimLightGrey2
+  highlight Visual            ctermfg=0 ctermbg=15 guibg=NvimDarkGrey4
+  highlight link VisualNOS    Visual
+  highlight WarningMsg        ctermfg=11 guifg=NvimLightYellow
+  highlight link WildMenu     PmenuSel
+  highlight Folded            guifg=NvimLightGrey4 guibg=NvimDarkGrey3
+  highlight link FoldColumn   SignColumn
+  highlight DiffAdd           ctermfg=0 ctermbg=10 guifg=NvimLightGrey1 guibg=NvimDarkGreen
+  highlight DiffChange        guifg=NvimLightGrey1 guibg=NvimDarkGrey4
+  highlight DiffDelete        cterm=bold ctermfg=9 gui=bold guifg=NvimLightRed
+  highlight DiffText          ctermfg=0 ctermbg=14 guifg=NvimLightGrey1 guibg=NvimDarkCyan
+  highlight SignColumn        guifg=NvimDarkGrey4
+  highlight Conceal           guifg=NvimDarkGrey4
+  highlight SpellBad          cterm=undercurl gui=undercurl guisp=NvimLightRed
+  highlight SpellCap          cterm=undercurl gui=undercurl guisp=NvimLightYellow
+  highlight SpellRare         cterm=undercurl gui=undercurl guisp=NvimLightCyan
+  highlight SpellLocal        cterm=undercurl gui=undercurl guisp=NvimLightGreen
+  highlight Pmenu             cterm=reverse guibg=NvimDarkGrey3
+  " SAVVY: 'blend', eh.
+  highlight PmenuSel          cterm=underline,reverse guifg=NvimDarkGrey3 guibg=NvimLightGrey2 blend=0
+  highlight link PmenuSbar    Pmenu
+  highlight PmenuThumb        guibg=NvimDarkGrey4
+  highlight link TabLine      StatusLineNC
+  highlight TabLineSel        cterm=bold gui=bold
+  highlight link TabLineFill  TabLine
+  highlight QuickFixLine      ctermfg=14 guifg=NvimLightCyan
+  " E411: Highlight group not found: StatusLineTerm
+  " E411: Highlight group not found: StatusLineTermNC
+  highlight MatchParen        cterm=bold,underline gui=bold guibg=NvimDarkGrey4
+  highlight Normal            guifg=NvimLightGrey2 guibg=NvimDarkGrey2
+  " E411: Highlight group not found: ToolbarLine
+  " E411: Highlight group not found: ToolbarButton
 endfunction
 
 " -------------------------------------------------------------------
@@ -224,27 +272,37 @@ endfunction
 function! s:Color__After_Dark__Set_Highlights()
 
   " FIXME/2017-12-09: I think a lot of the cterm* and term* colors might be
-  "   wrong -- since I generated some of this from within Vim, the term
-  "   colors might be specific to my machine/display. I think the term
-  "   colors should be in the range 0-15!
-  "     For now I'll comment out lines and prefix with "TERM:" if just
-  "       the term colors differs, and differing term values are > 15.
-  "     I'll also comment out unchanged lines and prefix with "SAME:".
-  "       I'm keeping them, though, to maintain parity with the earlier
-  "       function, to make the two easy to diff.
+  "   wrong — since I generated some of this from within Vim, the term
+  "   colors might be specific to my machine/display.
 
-  "highlight SpecialKey ctermfg=242 guifg=DarkGrey
-  " Color of Meta and special keys, i.e., unprintable characters. See :map.
+  " Color used for Meta and special keys, i.e., unprintable characters. See :map.
+  " - Compare to:
+  "    vim: SpecialKey term=bold            ctermfg=9                              guifg=Cyan
+  "   nvim: SpecialKey                                                             guifg=NvimDarkGrey4
+  "  tried: SpecialKey                      ctermfg=242                            guifg=DarkGrey
   highlight SpecialKey term=NONE cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
-  " SAME: highlight link EndOfBuffer NonText
-  "
-  "highlight NonText ctermfg=242 guifg=DarkGrey
-  " Make the tildes of blank lines visible.
-  "highlight NonText guifg=#7f7f7f
+  " CRUMB: #_USES_VIM_VALUE__SAME_AS_NEOVIM
+  highlight link EndOfBuffer NonText
+
+  " This is the tilde used in the window after the last buffer line
+  " to indicate nonexistent lines.
+  " - Compare to:
+  "    vim: NonText term=bold            ctermfg=9                     gui=bold guifg=Blue
+  "   nvim: NonText                                                             guifg=NvimDarkGrey4
+  "  tried: NonText                      ctermfg=242                            guifg=DarkGrey
   highlight NonText term=NONE cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=#7f7f7f guibg=NONE
 
-  " TERM: highlight Directory term=bold ctermfg=159 guifg=Cyan
+  " CRUMB: #_USES_VIM_VALUE__OVERRIDES_NEOVIM
+  " - Compare to:
+  "    vim: Directory term=bold ctermfg=11  guifg=Cyan
+  "   nvim: Directory           ctermfg=14  guifg=NvimLightCyan
+  "  tried: Directory term=bold ctermfg=159 guifg=Cyan
+  highlight Directory term=bold ctermfg=11  guifg=Cyan
+
+  " - Compare to:
+  "    vim: ErrorMsg term=standout ctermfg=15 ctermbg=4 guifg=White guibg=Red
+  "   nvim: ErrorMsg               ctermfg=9            guifg=NvimLightRed
   highlight ErrorMsg term=standout ctermfg=15 ctermbg=1 guifg=White guibg=Red
 
   " When you start a search (e.g., with /), IncSearch is the color used to
@@ -303,6 +361,9 @@ function! s:Color__After_Dark__Set_Highlights()
   "
   "   http://paletton.com/#uid=1000u0kllllaFw0g0qFqFg0w0aF
   "
+  " - Compare to:
+  "    vim: IncSearch term=reverse cterm=reverse gui=reverse
+  "   nvim: link IncSearch CurSearch
   highlight IncSearch ctermbg=233 ctermfg=228 guifg=#D46A6A guibg=#1C1C1C term=reverse,standout,italic cterm=reverse,standout,italic gui=standout,italic
 
   " 2017-12-09: The Search highlight is ridiculously hard to get right.
@@ -315,6 +376,19 @@ function! s:Color__After_Dark__Set_Highlights()
   " which is same as this Search highlight:
   "  highlight Search guibg=White guifg=Black
   "
+  " HSTRY/2018-02-01: Still figuring this out!
+  " - I tried a light pink background for search matches, but it's too subtle.
+  "   highlight Search term=reverse cterm=underline ctermfg=0 ctermbg=14 gui=underline guifg=#f0a0c0 guibg=#302028
+  " - Then I tried Black on Yellow, but that's a bit much.
+  "   highlight Search ctermfg=0 ctermbg=14 guifg=Black guibg=Yellow
+  " - 2018-02-14: cobalt2: A less vibrant yellow than Yellow. And not as black as Black.
+  " - 2018-05-08: I really cannot see any difference between underline and not.
+  " - Compare to:
+  "    vim: Search term=reverse                 ctermfg=0   ctermbg=14  guifg=Black   guibg=Yellow
+  "   nvim: Search                              ctermfg=0   ctermbg=11  guifg=NvimLightGrey1
+  "                                                                                   guibg=NvimDarkYellow
+  highlight Search term=reverse cterm=underline ctermfg=233 ctermbg=228 guifg=#1C1C1C guibg=#F2ED7F gui=underline
+
   "highlight Cursor guifg=black guibg=white
   "highlight Cursor guifg=red guibg=green
   "highlight iCursor guifg=red guibg=white
@@ -328,14 +402,15 @@ function! s:Color__After_Dark__Set_Highlights()
   "highlight Cursor term=bold cterm=bold guibg=Blue guifg=Green
   "highlight Cursor term=bold cterm=bold guibg=White guifg=White
 
-  " 2018-02-14: cobalt2
-  highlight CursorColumn term=reverse ctermbg=234 guibg=#FFC600
-  highlight CursorLineNr term=bold ctermfg=123 guifg=#80FCFF
-  highlight CursorLine term=underline ctermbg=235 guibg=#FFC600
-
   " 2024-05-16: Use gui=reverse so normal mode (block) and insert
   " mode (caret) cursors are *always* visible, regardless of highlight.
+  " - Compare to:
+  "    vim: Cursor guifg=bg guibg=fg
+  "   nvim: 
   highlight Cursor gui=reverse guifg=NONE guibg=NONE
+  " - Compare to:
+  "    vim: lCursor guifg=bg guibg=fg
+  "   nvim: 
   highlight iCursor gui=reverse guifg=NONE guibg=NONE
   " SAVVY: You may want to adjust the cursor size and blink.
   " - REFER: See :help guicursor
@@ -347,26 +422,65 @@ function! s:Color__After_Dark__Set_Highlights()
   "     set guicursor+=n-c-v:block-blinkon0-Cursor
   "     set guicursor+=i:ver29-blinkon0-iCursor
 
-  " 2018-02-01 19:52: STILL FIGURING THIS OUT!
-  " I tried a light pink background for search matches, but it's too subtle.
-  "  highlight Search term=reverse cterm=underline ctermfg=0 ctermbg=14 gui=underline guifg=#f0a0c0 guibg=#302028
-  " Then I tried Black on Yellow, but that's a bit much.
-  "  highlight Search ctermfg=0 ctermbg=14 guifg=Black guibg=Yellow
-  " 2018-02-14: cobalt2: A less vibrant yellow than Yellow. And not as black as Black.
-  " 2018-05-08: I really cannot see any difference between underline and not.
-  highlight Search term=reverse cterm=underline ctermfg=233 ctermbg=228 gui=underline guifg=#1C1C1C guibg=#F2ED7F
-
-  " TERM: highlight MoreMsg term=bold ctermfg=121 gui=bold guifg=SeaGreen
-  " SAME: highlight ModeMsg term=bold cterm=bold gui=bold
+  " 2018-02-14: cobalt2
+  " - Compare to:
+  "    vim: CursorColumn term=reverse ctermbg=8 guibg=Grey40
+  "   nvim: CursorColumn      guibg=NvimDarkGrey3
+  " TERM: highlight CursorColumn term=reverse ctermbg=242 guibg=Grey40
+  highlight CursorColumn term=reverse ctermbg=234 guibg=#FFC600
+  " - Compare to:
+  "    vim: CursorLine term=underline cterm=underline guibg=Grey40
+  "   nvim: 
+  " SAME: highlight CursorLine term=underline cterm=underline guibg=Grey40
+  highlight CursorLine term=underline ctermbg=235 guibg=#FFC600
+  " - Compare to:
+  "    vim: CursorLineNr term=bold ctermfg=14 gui=bold guifg=Yellow
+  "   nvim: 
+  highlight CursorLineNr term=bold ctermfg=123 guifg=#80FCFF
+  " FIXME/2025-01-20 12:36: This duplicate previously here?
+  " - Compare to:
+  "    vim: CursorLineNr term=bold ctermfg=14 gui=bold guifg=Yellow
+  "   nvim: CursorLineNr      cterm=bold gui=bold
+  highlight CursorLineNr term=bold ctermfg=11 gui=bold guifg=Yellow
 
   " Grey line numbers, rather than yellow.
   "highlight LineNr ctermfg=242 guifg=DarkGrey
+  " - Compare to:
+  "    vim: LineNr term=underline ctermfg=14 guifg=Yellow
+  "   nvim: LineNr            guifg=NvimDarkGrey4
   highlight LineNr term=NONE cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
-  highlight CursorLineNr term=bold ctermfg=11 gui=bold guifg=Yellow
+  " - Compare to:
+  "    vim: ColorColumn term=reverse ctermbg=4 guibg=DarkRed
+  "   nvim: 
+  "  tried: ColorColumn ctermfg=lightyellow ctermbg=darkgreen guifg=#D8DEE9 guibg=#2E3440
+  " Make the ColorColumn a gentler color that works with any text color over it.
+  highlight ColorColumn term=reverse ctermfg=14 ctermbg=2 guifg=#D8DEE9 guibg=#2E3440
+
+  " - Compare to:
+  "    vim: MoreMsg term=bold ctermfg=10 gui=bold guifg=SeaGreen
+  "   nvim: MoreMsg           ctermfg=14 guifg=NvimLightCyan
+  " TERM: highlight MoreMsg term=bold ctermfg=121 gui=bold guifg=SeaGreen
+
+  " - Compare to:
+  "    vim: MoreMsg term=bold ctermfg=10 gui=bold guifg=SeaGreen
+  "   nvim: ModeMsg           ctermfg=10 guifg=NvimLightGreen
+  " SAME: highlight ModeMsg term=bold cterm=bold gui=bold
+
+  " - Compare to:
+  "    vim: Question term=standout ctermfg=10 gui=bold guifg=Green
+  "   nvim: Question          ctermfg=14 guifg=NvimLightCyan
   " TERM: highlight Question term=standout ctermfg=121 gui=bold guifg=Green
-  "highlight StatusLine term=bold,reverse ctermfg=11 ctermbg=242 guifg=Yellow guibg=DarkGray
+
+  " - Compare to:
+  "    vim: StatusLine term=bold,reverse cterm=bold,reverse gui=bold,reverse
+  "   nvim: StatusLine        cterm=reverse guifg=NvimDarkGrey3 guibg=NvimLightGrey3
+  "  tried: StatusLine term=bold,reverse ctermfg=11 ctermbg=242 guifg=Yellow guibg=DarkGray
   highlight StatusLine term=bold,reverse gui=NONE guifg=Yellow guibg=DarkGreen cterm=NONE ctermfg=DarkYellow ctermbg=DarkGray
+
+  " - Compare to:
+  "    vim: StatusLineNC term=reverse cterm=reverse gui=reverse
+  "   nvim: StatusLineNC      cterm=bold,underline guifg=NvimLightGrey3 guibg=NvimDarkGrey3
   "highlight StatusLineNC term=reverse cterm=reverse ctermfg=15 ctermbg=242 guifg=White guibg=DarkGray
   "highlight StatusLineNC term=reverse gui=NONE guifg=Black guibg=DarkGray ctermfg=Black ctermbg=DarkGray
   highlight StatusLineNC term=reverse gui=NONE guifg=LightGray guibg=DarkBlue ctermfg=LightGray ctermbg=DarkBlue
@@ -380,24 +494,55 @@ function! s:Color__After_Dark__Set_Highlights()
   " IMHO.)
   "
   " Make the split border color white.
-  highlight VertSplit term=reverse cterm=reverse ctermfg=15 ctermbg=15 guifg=White guibg=White
   " ... or hide it completely:
   " Hide the vertical split window border.
   "   Between two windows that are vertically split, there are
   "   black rectangles with white bars inside. Make the vertical
   "   tab characters to be white on white, hiding them.
+  " - Compare to:
+  "    vim: VertSplit term=reverse cterm=reverse gui=reverse
+  "   nvim: link VertSplit    WinSeparator
+  "  tried: VertSplit term=reverse cterm=reverse ctermfg=15 ctermbg=15 guifg=White guibg=White
   highlight VertSplit term=reverse gui=NONE guifg=#060606 guibg=#060606 ctermfg=Black ctermbg=Black
 
-  " TERM: highlight Title term=bold ctermfg=225 gui=bold guifg=Magenta
+  " CRUMB: #_USES_VIM_VALUE__OVERRIDES_NEOVIM
+  " - Compare to:
+  "    vim: Title  term=bold ctermfg=13  gui=bold guifg=Magenta
+  "   nvim: Title cterm=bold             gui=bold guifg=NvimLightGrey2
+  "  tried: Title  term=bold ctermfg=225 gui=bold guifg=Magenta
+  highlight Title  term=bold ctermfg=13  gui=bold guifg=Magenta
+
   "highlight Visual term=reverse ctermbg=242 guibg=DarkGrey gui=None
   " 2017-12-17: Visual is going to be difficult to get right.
   "   How will this cut it? Red background... loud on paper, but I like it.
+  " - Compare to:
+  "    vim: Visual term=reverse cterm=reverse guibg=DarkGrey
+  "   nvim: Visual            ctermfg=0 ctermbg=15 guibg=NvimDarkGrey4
   highlight Visual term=reverse ctermbg=242 guifg=White guibg=Red gui=none
 
+  " - Compare to:
+  "    vim: VisualNOS term=bold,underline cterm=bold,underline gui=bold,underline
+  "   nvim: link VisualNOS    Visual
   " SAME: highlight VisualNOS term=bold,underline cterm=bold,underline gui=bold,underline
+
+  " - Compare to:
+  "    vim: WarningMsg term=standout ctermfg=12 guifg=Red
+  "   nvim: WarningMsg        ctermfg=11 guifg=NvimLightYellow
   " TERM: highlight WarningMsg term=standout ctermfg=224 guifg=Red
+
+  " - Compare to:
+  "    vim: WildMenu term=standout ctermfg=0 ctermbg=14 guifg=Black guibg=Yellow
+  "   nvim: link WildMenu     PmenuSel
   highlight WildMenu term=standout ctermfg=0 ctermbg=11 guifg=Black guibg=Yellow
+
+  " - Compare to:
+  "    vim: Folded term=standout ctermfg=11 ctermbg=8 guifg=Cyan guibg=DarkGrey
+  "   nvim: Folded            guifg=NvimLightGrey4 guibg=NvimDarkGrey3
   highlight Folded term=standout ctermfg=14 ctermbg=242 guifg=Cyan guibg=DarkGrey
+
+  " - Compare to:
+  "    vim: FoldColumn term=standout ctermfg=11 ctermbg=8 guifg=Cyan guibg=Grey
+  "   nvim: link FoldColumn   SignColumn
   "highlight FoldColumn term=standout ctermfg=14 ctermbg=242 guifg=Cyan guibg=Grey
   highlight FoldColumn term=standout ctermfg=14 ctermbg=242 guifg=Cyan guibg=Black
 
@@ -447,34 +592,81 @@ function! s:Color__After_Dark__Set_Highlights()
   " - The following highlights are from zazen (thanks, zazen!):
   "
   "     https://github.com/flazz/vim-colorschemes/blob/master/colors/zazen.vim
+  " - Compare to:
+  "    vim: DiffAdd term=bold ctermbg=1 guibg=DarkBlue
+  "   nvim: DiffAdd           ctermfg=0 ctermbg=10 guifg=NvimLightGrey1 guibg=NvimDarkGreen
   highlight DiffAdd term=bold ctermfg=40 ctermbg=22 guifg=#00cc00 guibg=#002200
+  " - Compare to:
+  "    vim: DiffChange term=bold ctermbg=5 guibg=DarkMagenta
+  "   nvim: DiffChange        guifg=NvimLightGrey1 guibg=NvimDarkGrey4
   highlight DiffChange term=bold ctermfg=209 ctermbg=52 guifg=#ff9955 guibg=#220000
+  " - Compare to:
+  "    vim: DiffDelete term=bold ctermfg=9 ctermbg=3 gui=bold guifg=Blue guibg=DarkCyan
+  "   nvim: DiffDelete        cterm=bold ctermfg=9 gui=bold guifg=NvimLightRed
   highlight DiffDelete term=bold ctermfg=9 ctermbg=52 guifg=#ff0000 guibg=#220000
+  " - Compare to:
+  "    vim: DiffText term=reverse cterm=bold ctermbg=12 gui=bold guibg=Red
+  "   nvim: DiffText          ctermfg=0 ctermbg=14 guifg=NvimLightGrey1 guibg=NvimDarkCyan
   highlight DiffText term=reverse ctermfg=9 ctermbg=52 guifg=#ff0000 guibg=#220000
 
+  " - Compare to:
+  "    vim: SignColumn term=standout ctermfg=11 ctermbg=8 guifg=Cyan guibg=Grey
+  "   nvim: SignColumn        guifg=NvimDarkGrey4
   highlight SignColumn term=standout ctermfg=14 ctermbg=242 guifg=Cyan guibg=Grey
+
+  " - Compare to:
+  "    vim: Conceal ctermfg=7 ctermbg=8 guifg=LightGrey guibg=DarkGrey
+  "   nvim: Conceal           guifg=NvimDarkGrey4
   " TERM: highlight Conceal ctermfg=7 ctermbg=242 guifg=LightGrey guibg=DarkGrey
 
   " 2017-12-06: I like the Spell highlights from Nord Vim.
   "   https://github.com/arcticicestudio/nord-vim
+  " - Compare to:
+  "    vim: SpellBad term=underline cterm=underline ctermbg=Red gui=undercurl guisp=Red guibg=#2E3440
+  "   nvim: SpellBad          cterm=undercurl gui=undercurl guisp=NvimLightRed
   highlight SpellBad term=reverse ctermbg=9 cterm=undercurl gui=undercurl guibg=#2E3440 guisp=#CC3333
+  " - Compare to:
+  "    vim: SpellCap term=reverse ctermbg=9 gui=undercurl guisp=Blue
+  "   nvim: SpellCap          cterm=undercurl gui=undercurl guisp=NvimLightYellow
   highlight SpellCap term=reverse ctermbg=12 cterm=undercurl gui=undercurl guibg=#2E3440 guisp=#EBCB8B
+  " - Compare to:
+  "    vim: SpellRare term=reverse ctermbg=13 gui=undercurl guisp=Magenta
+  "   nvim: SpellRare         cterm=undercurl gui=undercurl guisp=NvimLightCyan
   highlight SpellRare term=reverse ctermbg=13 cterm=undercurl gui=undercurl guibg=#2E3440 guisp=#ECEFF4
+  " - Compare to:
+  "    vim: SpellLocal term=underline ctermbg=11 gui=undercurl guisp=Cyan
+  "   nvim: SpellLocal        cterm=undercurl gui=undercurl guisp=NvimLightGreen
   highlight SpellLocal term=underline ctermbg=14 cterm=undercurl gui=undercurl guibg=#2E3440 guisp=#E5E9F0
 
+  " - Compare to:
+  "    vim: Pmenu ctermfg=0 ctermbg=13 guibg=Magenta
+  "   nvim: Pmenu             cterm=reverse guibg=NvimDarkGrey3
   " SAME: highlight Pmenu ctermfg=0 ctermbg=13 guibg=Magenta
+  " - Compare to:
+  "    vim: PmenuSel ctermfg=8 ctermbg=0 guibg=DarkGrey
+  "   nvim: PmenuSel          cterm=underline,reverse guifg=NvimDarkGrey3 guibg=NvimLightGrey2 blend=0
   " TERM: highlight PmenuSel ctermfg=242 ctermbg=0 guibg=DarkGrey
+  " - Compare to:
+  "    vim: PmenuSbar ctermbg=7 guibg=Grey
+  "   nvim: link PmenuSbar    Pmenu
   " TERM: highlight PmenuSbar ctermbg=248 guibg=Grey
+  " - Compare to:
+  "    vim: PmenuThumb ctermbg=15 guibg=White
+  "   nvim: PmenuThumb        guibg=NvimDarkGrey4
   " SAME: highlight PmenuThumb ctermbg=15 guibg=White
-  " TERM: highlight TabLine term=underline cterm=underline ctermfg=15 ctermbg=242 gui=underline guibg=DarkGrey
-  " SAME: highlight TabLineSel term=bold cterm=bold gui=bold
-  " SAME: highlight TabLineFill term=reverse cterm=reverse gui=reverse
-  " TERM: highlight CursorColumn term=reverse ctermbg=242 guibg=Grey40
-  " SAME: highlight CursorLine term=underline cterm=underline guibg=Grey40
 
-  " Make the ColorColumn a gentler color that works with any text color over it.
-  "highlight ColorColumn ctermfg=lightyellow ctermbg=darkgreen guifg=#D8DEE9 guibg=#2E3440
-  highlight ColorColumn term=reverse ctermfg=14 ctermbg=2 guifg=#D8DEE9 guibg=#2E3440
+  " - Compare to:
+  "    vim: TabLine term=underline cterm=underline ctermfg=15 ctermbg=8 gui=underline guibg=DarkGrey
+  "   nvim: link TabLine      StatusLineNC
+  " TERM: highlight TabLine term=underline cterm=underline ctermfg=15 ctermbg=242 gui=underline guibg=DarkGrey
+  " - Compare to:
+  "    vim: TabLineSel term=bold cterm=bold gui=bold
+  "   nvim: TabLineSel        cterm=bold gui=bold
+  " SAME: highlight TabLineSel term=bold cterm=bold gui=bold
+  " - Compare to:
+  "    vim: TabLineFill term=reverse cterm=reverse gui=reverse
+  "   nvim: link TabLineFill  TabLine
+  " SAME: highlight TabLineFill term=reverse cterm=reverse gui=reverse
 
   " 2021-02-18: This was same as Search, e.g.,
   "   highlight link QuickFixLine Search
@@ -490,14 +682,44 @@ function! s:Color__After_Dark__Set_Highlights()
   " changing the foreground colors (which are cyan for the path (qfFileName),
   " gray for line numbers (qfLineNr), and white for the matching line text
   " (which my <F10> inspector reports as not being assigned a category)).
+  " - Compare to:
+  "    vim: link QuickFixLine Search
+  "   nvim: 
   highlight QuickFixLine guibg=#333300
 
+  " - Compare to:
+  "    vim: StatusLineTerm term=bold,reverse cterm=bold ctermfg=0 ctermbg=10 gui=bold guifg=bg guibg=LightGreen
+  "   nvim: N/a
   " TERM: highlight StatusLineTerm term=bold,reverse cterm=bold ctermfg=0 ctermbg=121 gui=bold guifg=bg guibg=LightGreen
+  " - Compare to:
+  "    vim: StatusLineTermNC term=reverse ctermfg=0 ctermbg=10 guifg=bg guibg=LightGreen
+  "   nvim: N/a
   " TERM: highlight StatusLineTermNC term=reverse ctermfg=0 ctermbg=121 guifg=bg guibg=LightGreen
 
+  " - Compare to:
+  "    vim: MatchParen term=reverse ctermbg=3 guibg=DarkCyan
+  "   nvim: MatchParen        cterm=bold,underline gui=bold guibg=NvimDarkGrey4
   highlight MatchParen term=reverse ctermbg=6 guibg=DarkCyan
-  " SAME: highlight Normal ctermfg=15 guifg=White guibg=#060606
+
+  " CRUMB: #_USES_VIM_VALUE__OVERRIDES_NEOVIM
+  " - Compare to:
+  "    vim: Normal ctermfg=15 guifg=White          guibg=#060606
+  "   nvim: Normal            guifg=NvimLightGrey2 guibg=NvimDarkGrey2
+  highlight Normal ctermfg=15 guifg=White          guibg=#060606
+
+  " NormalFloat — Normal text in floating windows.
+  " - Compare to:
+  "    vim: N/a
+  "   nvim: NormalFloat guibg=NvimDarkGrey1
+
+  " - Compare to:
+  "    vim: ToolbarLine term=underline ctermbg=8 guibg=Grey50
+  "   nvim: N/a
   " TERM: highlight ToolbarLine term=underline ctermbg=242 guibg=Grey50
+
+  " - Compare to:
+  "    vim: ToolbarButton cterm=bold ctermfg=0 ctermbg=7 gui=bold guifg=Black guibg=LightGrey
+  "   nvim: N/a
   " SAME: highlight ToolbarButton cterm=bold ctermfg=0 ctermbg=7 gui=bold guifg=Black guibg=LightGrey
 
   " 2017-12-05: I'm pretty sure I do want italicized comments...
@@ -513,12 +735,25 @@ function! s:Color__After_Dark__Set_Highlights()
   " Or pinkish reddish?:
   "highlight Comment term=bold ctermfg=8 guifg=#b38a82
   " I really like mild blue comments, I think:
+  " - Compare to:
+  "    vim: 
+  "   nvim: 
   highlight Comment term=bold ctermfg=14 gui=NONE guifg=#80a0ff
 
+  " - Compare to:
+  "    vim: 
+  "   nvim: 
   "highlight Constant term=underline ctermfg=13 guifg=#ffa0a0
   highlight Constant term=underline ctermfg=13 guifg=#ffcc77
+
+  " - Compare to:
+  "    vim: 
+  "   nvim: 
   " TERM: highlight Special term=bold ctermfg=224 guifg=Orange
 
+  " - Compare to:
+  "    vim: 
+  "   nvim: 
   "highlight Identifier term=underline guifg=#D8DEE9
   " In lighttime, same color as SpellLocal.
   "highlight Identifier term=underline ctermfg=6 guifg=#E5E9F0
@@ -527,20 +762,48 @@ function! s:Color__After_Dark__Set_Highlights()
   " Meh: The normal Identifier highlight is a nice baby blue:
   " TERM: highlight Identifier term=underline cterm=bold ctermfg=14 guifg=#40ffff
 
+  " - Compare to:
+  "    vim: 
+  "   nvim: 
   highlight Statement term=bold ctermfg=11 gui=bold guifg=#ffff60
+
+  " - Compare to:
+  "    vim: 
+  "   nvim: 
   " TERM: highlight PreProc term=underline ctermfg=81 guifg=#ff80ff
+
+  " - Compare to:
+  "    vim: 
+  "   nvim: 
   " TERM: highlight Type term=underline ctermfg=121 gui=bold guifg=#60ff60
+
+  " - Compare to:
+  "    vim: 
+  "   nvim: 
   " TERM: highlight Underlined term=underline cterm=underline ctermfg=81 gui=underline guifg=#80a0ff
+
+  " - Compare to:
+  "    vim: 
+  "   nvim: 
   highlight Ignore ctermfg=0 guifg=bg
+  " - Compare to:
+  "    vim: 
+  "   nvim: 
   highlight Error term=reverse ctermfg=15 ctermbg=9 guifg=White guibg=Red
 
   " "TODO:" and "FIXME:" Highlights.
+  " - Compare to:
+  "    vim: 
+  "   nvim: 
   "highlight Todo term=standout ctermfg=3 guifg=#EBCB8B guibg=Yellow
   "highlight Todo term=standout ctermfg=3 guifg=#000000 guibg=Yellow
   "highlight Todo term=standout ctermfg=3 guifg=#000000 guibg=#C6C6C6
   highlight Todo term=standout ctermfg=0 ctermbg=11 guifg=Blue guibg=Yellow
 
   " Project plugin directory line highlight when section is folded.
+  " - Compare to:
+  "    vim: 
+  "   nvim: 
   highlight Folded guifg=#cccccc guibg=#333333
 
   " 2020-07-21: (lb): I'm tired on the gross orangy literal block color,
@@ -551,11 +814,58 @@ function! s:Color__After_Dark__Set_Highlights()
   "   where
   "     SynLink String		Constant
   "   and Constant is defined in this file as #ffa0a0.
+  " - Compare to:
+  "    vim: 
+  "   nvim: 
   highlight rstLiteralBlock guifg=#60ff60
+  " - Compare to:
+  "    vim: 
+  "   nvim: 
   highlight rstDelimiter guifg=#60ff60
 endfunction
 
 " ***
+
+" REFER/2025-02-06: From :h vim-differences — :h nvim-defaults —
+" - "Default color scheme has been updated. This can result in color schemes
+"    looking differently due to them relying on how highlight groups are defined
+"    by default. Add
+"
+"      :colorscheme vim
+"
+"    to |init.vim| or
+"
+"      :source $VIMRUNTIME/colors/vim.lua
+"
+"    to your color scheme file to restore the old default links and colors."
+
+" DUNNO/2025-02-23: At first it seemed like this was necessary for
+" after-dark, but now it doesn't seem necessary, and it also borks
+" things.
+" - If we source this file, some colors we don't set are
+"   messed up, e.g., the default NormalFloat is:
+"     NormalFloat guibg=NvimDarkGrey1
+"   But after colors/vim.lua, it's changed to:
+"     NormalFloat links to Pmenu
+"   which appears as cyan on bright pink, very unreadable
+"   (and silly color for a floating window background, ha).
+" - Also incompatible with LazyVim.
+"   - E.g., makes the colorscheme picker unreadable (<Leader>uC)
+"   Regardless, after-dark looks bad in LazyVim... but I realize
+"   how dated this colorscheme is =(. And how many highlight groups
+"   its missing (like NormalFloat). And how there are no plugin-specific
+"   highlight definitions like most popular colorschemes seem to define.
+
+function! s:Color__After_Dark__Apply_Default_Vim_Colorscheme()
+  if !has('nvim')
+
+    return
+  endif
+
+  " ISOFF/2025-02-23: See comment above.
+  "
+  "  exec "source " .. $VIMRUNTIME .. "/colors/vim.lua"
+endfunction
 
 " Restore the cursor line highlight, sorta.
 " - The author doesn't like the current line highlight (I prefer it
@@ -659,6 +969,8 @@ function! s:Color__After_Dark__Main()
   "   the insert cursor, which you can restore thusly:
   "     :hi iCursor gui=reverse guifg=NONE guibg=NONE
   highlight clear
+
+  call s:Color__After_Dark__Apply_Default_Vim_Colorscheme()
 
   call s:Color__After_Dark__Restore_Cursorline()
 
