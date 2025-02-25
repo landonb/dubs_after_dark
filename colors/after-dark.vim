@@ -120,7 +120,7 @@
 "     https://github.com/landonb/dubs_mescaline#🍄
 "
 "     - CXREF: Or on a DepoXy environment locally at:
-"       ~/.kit/nvim/landonb/start/dubs_mescaline/plugin/dubs_mescaline.vim
+"       ~/.kit/nvim/landonb/dubs_mescaline/plugin/dubs_mescaline.vim
 
 " -------------------------------------------------------------------
 
