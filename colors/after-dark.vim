@@ -501,7 +501,8 @@ function! s:Color__After_Dark__Set_Highlights()
   "   tab characters to be white on white, hiding them.
   " - Compare to:
   "    vim: VertSplit term=reverse cterm=reverse gui=reverse
-  "   nvim: link VertSplit    WinSeparator
+  "   nvim: link VertSplit WinSeparator
+  "         hi WinSeparator link Normal
   "  tried: VertSplit term=reverse cterm=reverse ctermfg=15 ctermbg=15 guifg=White guibg=White
   highlight VertSplit term=reverse gui=NONE guifg=#060606 guibg=#060606 ctermfg=Black ctermbg=Black
 
