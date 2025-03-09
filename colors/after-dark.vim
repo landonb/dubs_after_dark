@@ -428,20 +428,27 @@ function! s:Color__After_Dark__Set_Highlights()
   "   nvim: CursorColumn      guibg=NvimDarkGrey3
   " TERM: highlight CursorColumn term=reverse ctermbg=242 guibg=Grey40
   highlight CursorColumn term=reverse ctermbg=234 guibg=#FFC600
-  " - Compare to:
+  " - Compare to: The Vim and Neovim defaults are a similar medium gray background:
   "    vim: CursorLine term=underline cterm=underline guibg=Grey40
-  "   nvim: 
-  " SAME: highlight CursorLine term=underline cterm=underline guibg=Grey40
-  highlight CursorLine term=underline ctermbg=235 guibg=#FFC600
+  "   nvim: CursorLine guibg=NvimDarkGrey3
+  " Bright yellow background
+  "   highlight CursorLine term=underline ctermbg=235 guibg=#ffc600
+  " "Invisible" highlight, same as `:set [nocursorline|nocul]`
+  "   exe 'highlight CursorLine term=underline ctermbg=235 guibg=' .. g:dubs_after_dark_background
+  " A very light background shade, the catppuccin-mocha bg color:
+  highlight CursorLine term=underline ctermbg=235 guibg=#1e1e2e
+  " When &cursorline set, and &cursorlineopt contains "number" or is "both",
+  " this is this is the 'number' highlight for the current line.
   " - Compare to:
   "    vim: CursorLineNr term=bold ctermfg=14 gui=bold guifg=Yellow
-  "   nvim: 
-  highlight CursorLineNr term=bold ctermfg=123 guifg=#80FCFF
-  " FIXME/2025-01-20 12:36: This duplicate previously here?
-  " - Compare to:
-  "    vim: CursorLineNr term=bold ctermfg=14 gui=bold guifg=Yellow
-  "   nvim: CursorLineNr      cterm=bold gui=bold
-  highlight CursorLineNr term=bold ctermfg=11 gui=bold guifg=Yellow
+  "   nvim: CursorLineNr cterm=bold gui=bold
+  " Cyan cursor line number:
+  "   highlight CursorLineNr term=bold ctermfg=123 guifg=#80FCFF
+  " Yellow cursor line number (like vim default):
+  "   highlight CursorLineNr term=bold ctermfg=11 gui=bold guifg=Yellow
+  " Same color as other line numbers, so after-dark colorscheme
+  " looks the same regardless of &cursorlineopt.
+  highlight! link CursorLineNr LineNr
 
   " Grey line numbers, rather than yellow.
   "highlight LineNr ctermfg=242 guifg=DarkGrey
