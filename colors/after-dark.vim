@@ -513,6 +513,11 @@ function! s:Color__After_Dark__Set_Highlights()
   "  tried: VertSplit term=reverse cterm=reverse ctermfg=15 ctermbg=15 guifg=White guibg=White
   highlight VertSplit term=reverse gui=NONE guifg=#060606 guibg=#060606 ctermfg=Black ctermbg=Black
 
+  " Same color as CursorLine, and a few pixels wide:
+  "   highlight WinSeparator guifg=#060606 guibg=#060606
+  " So very subtle, just a thin line:
+  highlight WinSeparator guifg=#1e1e2e guibg=#060606
+
   " CRUMB: #_USES_VIM_VALUE__OVERRIDES_NEOVIM
   " - Compare to:
   "    vim: Title  term=bold ctermfg=13  gui=bold guifg=Magenta
