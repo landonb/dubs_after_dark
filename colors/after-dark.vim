@@ -17,7 +17,7 @@
 "
 " - It deaults to basically black:
 "
-"   let g:dubs_after_dark_background = "060606"
+"   let g:dubs_after_dark_background = "#060606"
 "
 " And rather than add other configurable options, you're encouraged
 " to instead fork this project and make it your own colorscheme.
@@ -916,13 +916,13 @@ endfunction
 " too much:
 "
 "   " Dark grayish black
-"   let g:dubs_after_dark_background = "1B1B1A"
+"   let g:dubs_after_dark_background = "#1B1B1A"
 "   " Less dark gray black
-"   let g:dubs_after_dark_background = "212121"
+"   let g:dubs_after_dark_background = "#212121"
 "   " Slightly bluish black
-"   let g:dubs_after_dark_background = "131d28"
+"   let g:dubs_after_dark_background = "#131d28"
 "   " Slightly reddish black
-"   let g:dubs_after_dark_background = "292123"
+"   let g:dubs_after_dark_background = "#292123"
 
 " 2017-11-12: Weird. In the terminal ctermbg=Black or =0 is same as =DarkGray/DarkGrey.
 "   But using 8 gets us black... or any number not negative or 0-7....
@@ -931,11 +931,11 @@ endfunction
 "   highlight Normal gui=NONE guifg=White guibg=#060606 ctermfg=White ctermbg=none
 function! s:Color__After_Dark__Set_Normal_Highlight()
   if !exists("g:dubs_after_dark_background")
-    let g:dubs_after_dark_background = "060606"
+    let g:dubs_after_dark_background = "#060606"
   endif
 
   exe 'highlight Normal gui=NONE '
-    \ 'guifg=White guibg=#' . g:dubs_after_dark_background
+    \ 'guifg=White guibg=' .. g:dubs_after_dark_background
     \ 'ctermfg=White ctermbg=none'
 endfunction
 
