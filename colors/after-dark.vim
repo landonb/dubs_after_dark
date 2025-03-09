@@ -533,6 +533,21 @@ function! s:Color__After_Dark__Set_Highlights()
   " highlight Visual term=reverse ctermbg=242 guibg=DarkGrey gui=None
   highlight Visual term=reverse ctermbg=242 guifg=White guibg=Red gui=none
 
+  " 2025-03-07: LazyVim uses Visual to highlight the full token that's under
+  " the cursor, so a red background is quite annoying.
+  " - Or technically:
+  "     hi LspReferenceWrite links to Visual
+  "   - Well, that's what :Inspect shows, but :hi says this:
+  "     hi LspReferenceWrite links to LspReferenceText
+  "     hi LspReferenceText links to Visual
+  "   - And another LazyVim instance I haven't changed colorscheme in uses:
+  "     hi LspReferenceWrite guibg=#45475a
+  "   - Oh, and auto-highlighted strings use LspReferenceText...
+  " This isn't too bad, I think it's the LazyVim or catppuccin-mocha
+  " highlight. It's nice and light/faint. And the actual selection is
+  " still a loud, obnoxious red, ha.
+  highlight LspReferenceText guibg=#45475a
+
   " - Compare to:
   "    vim: VisualNOS term=bold,underline cterm=bold,underline gui=bold,underline
   "   nvim: link VisualNOS    Visual
