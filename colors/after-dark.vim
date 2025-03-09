@@ -520,12 +520,12 @@ function! s:Color__After_Dark__Set_Highlights()
   "  tried: Title  term=bold ctermfg=225 gui=bold guifg=Magenta
   highlight Title  term=bold ctermfg=13  gui=bold guifg=Magenta
 
-  "highlight Visual term=reverse ctermbg=242 guibg=DarkGrey gui=None
   " 2017-12-17: Visual is going to be difficult to get right.
   "   How will this cut it? Red background... loud on paper, but I like it.
   " - Compare to:
   "    vim: Visual term=reverse cterm=reverse guibg=DarkGrey
   "   nvim: Visual            ctermfg=0 ctermbg=15 guibg=NvimDarkGrey4
+  " highlight Visual term=reverse ctermbg=242 guibg=DarkGrey gui=None
   highlight Visual term=reverse ctermbg=242 guifg=White guibg=Red gui=none
 
   " - Compare to:
